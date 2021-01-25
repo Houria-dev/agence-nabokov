@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CollaboratorController!{% endblock %}
+
+{% block body %}
+{# Alert d'ajout d'un nouveau collaborateur #}
+{% for message in app.flashes('new_collaborator') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de modification d'un collaborateur #}
+{% for message in app.flashes('update_collaborator') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de modification d'un collaborateur #}
+{% for message in app.flashes('delete_collaborator') %}
+ {{message}}
+{% endfor %}
+
+<br>
+{# Ajouter un collaborateur #}
+
+<a  href="{{path('admin_newCollaborators')}}"> Ajouter un collaborateur </a>
+
+
+{# Afficher tout les collaborateur et jout des lien de modif et sup #}
+{% for collaborator in collaborators %}
+<h2> collaborateur </h2>
+{{collaborator.firstname|capitalize }} {{collaborator.lastname|upper}}<br>
+<h2>Biographie du collaborateur</h2>
+{{collaborator.biography}}
+<br>
+<a  href="{{path('admin_updateCollaborators', {id:collaborator.id})}}"> Modifier </a>
+<a  href="{{path('admin_deleteCollaborators', {id:collaborator.id})}}"> Supprimer </a>
+{% endfor %}
+
+
+{% endblock %}

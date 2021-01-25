@@ -8,6 +8,6 @@
  {{ form(contact_form) }}
 
 {% for message in app.flashes('success_mail') %}
-<p> le message a bien été envoyé <p>
+{{message}} 
 {% endfor %}
 {% endblock %}

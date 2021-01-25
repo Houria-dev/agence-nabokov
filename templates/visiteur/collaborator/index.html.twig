@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CollaboratorController!{% endblock %}
+
+{% block body %}
+
+
+{# Afficher tout les collaborateur et jout des lien pour affichage individuel #}
+{% for collaborator in collaborators %}
+<h2> Auteur </h2>
+{{collaborator.firstname|capitalize }} {{collaborator.lastname|upper}}<br>
+<h2>Biographie de l'auteur</h2>
+{{collaborator.biography}}
+<br>
+<a  href="{{path('showCollaborator', {id:collaborator.id})}}"> Afficher </a>
+{% endfor %}
+
+
+{% endblock %}
