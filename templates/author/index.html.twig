@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}auteurs!{% endblock %}
+
+{% block body %}
+    <h1>Page des auteurs</h1>
+    <hr>
+
+    <h2>findAll() :: Liste de tous les produits</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Images</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <th scope="row">{{ author.id }}</th>
+                <td>{{ author.firstName }}</td>
+                <td>{{ author.lastName }}</td>
+                <td>
+                    <a href="{{ path('author_show', {idAuthor: author.id }) }}" class="btn btn-primary btn-sm">Afficher</a>
+                    <a href="{{ path('author_edit', {idAuthor: author.id }) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                    <a href="{{ path('author_delete', {idAuthor: author.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+                 
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+      <a href="{{ path('author_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+
+{% endblock %}
