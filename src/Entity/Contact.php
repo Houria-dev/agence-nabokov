@@ -17,6 +17,12 @@ class Contact
      * @Assert\NotBlank()
      * @Assert\Length(min=10)
      */
+    private $sujet;
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10)
+     */
     private $message;
 
      /**
@@ -33,9 +39,17 @@ class Contact
         return $this->message;
     }
 
+    public function getSujet(){
+        return $this->sujet;
+    }
+
 
     public function setEmail($email){
         $this->email=$email;
+    }
+    
+    public function setSujet($sujet){
+        $this->sujet=$sujet;
     }
 
     public function setMessage($message){
