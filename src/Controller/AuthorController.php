@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Author;
 use App\Form\AuthorType;
+use App\Form\UpdateAuthorType;
 use App\Repository\AuthorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AuthorController extends AbstractController
 {
+    /**
+    * @Route("/auteurs", name="index")
+    */
+    public function index(AuthorRepository $authorRepository)
+    {
+        $authors = $authorRepository->findAll();
+        return $this->render('visiteur/author/index.html.twig', [
+            'authors' => $authors,
+        ]);
+    }
+    
     /**
      * @Route("/admin/auteurs", name="author_index")
      */
@@ -59,7 +71,7 @@ class AuthorController extends AbstractController
     public function edit($id, Request $request, AuthorRepository $authorRepository)
     {
         $author = $authorRepository->find($id);
-        $form = $this->createForm(AuthorType::class, $author);
+        $form = $this->createForm(UpdateAuthorType::class, $author);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
@@ -71,7 +83,7 @@ class AuthorController extends AbstractController
             return $this->redirectToRoute('author_index');
         }
         
-        return $this->render('administrator/author/new.html.twig', [
+        return $this->render('administrator/author/update.html.twig', [
             'formAuthor' => $form->createView()
         ]);        
     }
