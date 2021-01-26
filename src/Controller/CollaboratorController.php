@@ -45,7 +45,7 @@ class CollaboratorController extends AbstractController
     }
     
     /**
-     * @Route("/admin/nouveauCollaborateur", name="admin_newCollaborators")
+     * @Route("/admin/collaborateur/nouveau", name="admin_newCollaborators")
      */
     
      public function add(Request $request)
@@ -67,7 +67,7 @@ class CollaboratorController extends AbstractController
      }
 
      /**
-     * @Route("/admin/modifieCollaborateur/{id}", name="admin_updateCollaborators",  requirements={"id"="\d+"})
+     * @Route("/admin/collaborateur/modifie/{id}", name="admin_updateCollaborators",  requirements={"id"="\d+"})
      */
     
     public function update(Request $request, $id)
@@ -92,7 +92,7 @@ class CollaboratorController extends AbstractController
         
     }
      /**
-     * @Route("/admin/supprimeCollaborateur/{id}", name="admin_deleteCollaborators",  requirements={"id"="\d+"})
+     * @Route("/admin/collaborateur/supprime/{id}", name="admin_deleteCollaborators",  requirements={"id"="\d+"})
      */
     public function delete($id)
     {
