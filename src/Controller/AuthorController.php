@@ -14,18 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
     /**
-     * @Route("/auteurs", name="author_index")
+     * @Route("/admin/auteurs", name="author_index")
      */
     public function indexpage(AuthorRepository $authorRepository)
     {
         $authors = $authorRepository->findAll();
-        return $this->render('author/index.html.twig', [
+        return $this->render('administrator/author/index.html.twig', [
             'authors' => $authors,
         ]);
     }
 
     /**
-     * @Route("/admin/auteurs/new", name="author_new")
+     * @Route("/admin/auteurs/nouveau", name="author_new")
      */
     public function new(Request $request)
     {
@@ -47,56 +47,59 @@ class AuthorController extends AbstractController
             return $this->redirectToRoute('author_index');
         }
 
-        return $this->render('author/new.html.twig', [
+        return $this->render('administrator/author/new.html.twig', [
             'formAuthor' => $form->createView()
         ]);
     }
 
 
      /**
-     * @Route("/admin/auteurs/edit/{idAuthor}", name="author_edit")
+     * @Route("/admin/auteurs/{id}", name="author_edit")
      */    
-    public function edit($idAuthor, Request $request, AuthorRepository $authorRepository)
+    public function edit($id, Request $request, AuthorRepository $authorRepository)
     {
-        $author = $authorRepository->find($idAuthor);
+        $author = $authorRepository->find($id);
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+
+            $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
+
             return $this->redirectToRoute('author_index');
         }
         
-        return $this->render('author/new.html.twig', [
+        return $this->render('administrator/author/new.html.twig', [
             'formAuthor' => $form->createView()
         ]);        
     }
 
-
+    /*
      /**
-     * @Route("/auteurs/{idAuthor}", name="author_show")
-     */
-    public function show($idAuthor, AuthorRepository $authorRepository)
+     * @Route("/auteurs/{id}", name="author_show")
+    */
+    public function show($id, AuthorRepository $authorRepository)
     {
-        $author = $authorRepository->find($idAuthor);
+        $author = $authorRepository->find($id);
 
         if(!$author)
         {
             die("Aucun auteur trouvé !");
         }
 
-        return $this->render('author/show.html.twig', [
+        return $this->render('visiteur/author/show.html.twig', [
             'author' => $author
         ]);
     } 
-
+  
     /**
-     * @Route("/admin/auteurs/delete/{idAuthor}", name="author_delete")
+     * @Route("/admin/auteurs/delete/{id}", name="author_delete")
      */
-    public function delete($idAuthor, AuthorRepository $authorRepository)
+    public function delete($id, AuthorRepository $authorRepository)
     {
-        $author = $authorRepository->find($idAuthor);
+        $author = $authorRepository->find($id);
         if(!$author)
         {
             die("Aucun auteur trouvé !");
@@ -105,6 +108,7 @@ class AuthorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
+         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
 
         return $this->redirectToRoute('author_index');
     }

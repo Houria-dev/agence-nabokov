@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello auteur!{% endblock %}
+
+{% block body %}
+
+
+{# Afficher tout les auteurs et jout des lien pour affichage individuel #}
+{% for author in authors %}
+
+{{author.firstname|capitalize }} {{author.lastname|upper}}<br>
+<h2>Biographie du auteur</h2>
+{{author.biography}}
+<br>
+{# <a  href="{{path('author_show', {id:author.id})}}"> Afficher </a> #}
+{% endfor %}
+
+
+{% endblock %}
