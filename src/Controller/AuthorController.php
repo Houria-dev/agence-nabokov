@@ -34,7 +34,7 @@ class AuthorController extends AbstractController
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
 
-        //Verifie si le bouton a été cliqué
+        
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -42,7 +42,7 @@ class AuthorController extends AbstractController
             $em->persist($author);
             $em->flush();
 
-            $this->addFlash("add_author_success", "L'auteur a bien été ajouté !");
+            $this->addFlash("add_author_success", "L'auteur a bien Ã©tÃ©  ajoutÃ© !");
 
             return $this->redirectToRoute('author_index');
         }
@@ -66,7 +66,7 @@ class AuthorController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
+            $this->addFlash("edit_author_success", "L'auteur a bien Ã©tÃ© modifiÃ© !");
 
             return $this->redirectToRoute('author_index');
         }
@@ -76,7 +76,7 @@ class AuthorController extends AbstractController
         ]);        
     }
 
-    /*
+    
      /**
      * @Route("/auteurs/{id}", name="author_show")
     */
@@ -84,10 +84,10 @@ class AuthorController extends AbstractController
     {
         $author = $authorRepository->find($id);
 
-        if(!$author)
-        {
-            die("Aucun auteur trouvé !");
-        }
+        // if(!$author)
+        // {
+        //     die("Aucun auteur trouvï¿½ !");
+        // }
 
         return $this->render('visiteur/author/show.html.twig', [
             'author' => $author
@@ -102,13 +102,13 @@ class AuthorController extends AbstractController
         $author = $authorRepository->find($id);
         if(!$author)
         {
-            die("Aucun auteur trouvé !");
+            die("Aucun auteur trouvï¿½ !");
         }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
-         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
+         $this->addFlash("delete_author_success", "L'auteur a bien ï¿½tï¿½ supprimï¿½ !");
 
         return $this->redirectToRoute('author_index');
     }
