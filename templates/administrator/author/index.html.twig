@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello auteurs!{% endblock %}
+
+{% block body %}
+{# Alert d'ajout d'un nouveau auteur #}
+{% for message in app.flashes('add_author_success') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de modification d'un auteur #}
+{% for message in app.flashes('edit_author_success') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de suppression d'un auteur #}
+{% for message in app.flashes('delete_author_success') %}
+ {{message}}
+{% endfor %}
+
+<br>
+{# Ajouter un auteur #}
+
+<a  href="{{path('author_new')}}"> Ajouter un auteurs </a>
+
+
+{# Afficher tout les auteurs et jout des lien de modif et sup #}
+{% for author in authors %}
+<h2> auteurs </h2>
+{{author.firstname|capitalize }} {{author.lastname|upper}}<br>
+
+  {% if author.imageName is defined and author.imageName is not empty %}
+  {# <img src="{{ asset('images/authors/' ~ author.imageName ) }}" alt="photo du auteur" width="400px"><br><br> #}
+  <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br><br>
+  {% endif %}
+
+<h2>Biographie du auteur</h2>
+{{author.biography}}
+<br>
+<a  href="{{path('author_edit', {id:author.id})}}"> Modifier </a>
+<a  href="{{path('author_delete', {id:author.id})}}"> Supprimer </a>
+{% endfor %}
+
+
+{% endblock %}
