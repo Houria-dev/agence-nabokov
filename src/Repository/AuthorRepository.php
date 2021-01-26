@@ -20,6 +20,19 @@ class AuthorRepository extends ServiceEntityRepository
     }
 
     // /**
+    //  * @return author[] Returns an array of author objects
+    //  */
+    
+    public function findAllOrdredByName()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.lastName', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
     //  * @return Author[] Returns an array of Author objects
     //  */
     /*
