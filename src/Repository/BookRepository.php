@@ -34,6 +34,16 @@ class BookRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findAllOrdredByDateAndLimited()
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.publication_date', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     
 
     /*

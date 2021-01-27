@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello auteurs!{% endblock %}
+
+{% block body %}
+    <h1>Actualité</h1>
+    <div style="display: flex; justify-content: space-around">
+        {% for book in lastBooks %}
+            <div style="padding:10px; border: solid 1px;">
+               {{ book.title }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
