@@ -73,7 +73,7 @@ class Author
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="auteur_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="auteur", orphanRemoval=true)
      */
     private $books;
     

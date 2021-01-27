@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
     /**
-    * @Route("/auteurs", name="index")
+    * @Route("/auteurs", name="author_visitor_index")
     */
     public function index(AuthorRepository $authorRepository)
     {
@@ -114,13 +114,13 @@ class AuthorController extends AbstractController
         $author = $authorRepository->find($id);
         if(!$author)
         {
-            die("Aucun auteur trouv� !");
+            die("Aucun auteur trouvé !");
         }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
-         $this->addFlash("delete_author_success", "L'auteur a bien �t� supprim� !");
+         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
 
         return $this->redirectToRoute('author_index');
     }

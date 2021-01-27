@@ -1,5 +1,15 @@
-<h2>{{author.firstname}} {{author.lastname}}  </h2>
+<h2>{{ author.firstname }} {{ author.lastname }}  </h2>
 <h3> Bioraphie </h3>
-{{author.biography}}
+{{ author.biography }}
 <br>
-<a href="{{path('authors')}}"> Retour à la liste des auteurs </a>
+<h2>Livres :</h2>
+<div style="display:flex">
+    {% for book in author.books %}
+        <div style="padding:10px; border:solid 1px;">
+            <img src="{{ asset('images/books/' ~ book.imageName ) }}" alt="photo du auteur" width="100px"><br><br>
+
+            <h1>{{ book.title }}</h1>
+        </div>
+    {% endfor %}
+</div>
+<a href="{{ path('author_visitor_index') }}"> Retour Ã  la liste des auteurs </a>

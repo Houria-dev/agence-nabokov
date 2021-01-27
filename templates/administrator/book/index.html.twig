@@ -3,7 +3,7 @@
 {% block title %}Hello book!{% endblock %}
 
 {% block body %}
-<div style="padding:10px;">
+
 {# Alert d'ajout d'un nouveau auteur #}
 {% for message in app.flashes('add_book_success') %}
  {{message}}
@@ -21,19 +21,14 @@
 
 <br>
 {# Ajouter un auteur #}
-
+<div style = "margin: 15px">
 <a  href="{{path('book_new')}}"> Ajouter un livre </a>
+</div>
 
-<br>
-<br>
-
-
-
-
-<br>
-
+<div style="display: flex; justify-content: space-around">
 {% for book in books %}
 
+ <div style="padding:10px; border: solid 1px;">
 
 {% if book.imageName is defined and book.imageName is not empty %}
 <img src="{{ asset('images/books/' ~ book.imageName ) }}" alt="photo du auteur" width="100px"><br><br>
@@ -53,5 +48,5 @@ Editeur:{{book.editor}}
 <a  href="{{path('book_delete', {id:book.id})}}"> Supprimer </a>
 </div>
 {% endfor %}
-
+</div>
 {% endblock %}

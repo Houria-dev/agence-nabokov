@@ -88,7 +88,7 @@ class BookController extends AbstractController
         $em->remove($book);
         $em->flush();
 
-        $this->addFlash("delete_book_success", "Le livre a bien été modifié !");
+        $this->addFlash("delete_book_success", "Le livre a bien été supprimé !");
 
         return $this->redirectToRoute('book_index');
         

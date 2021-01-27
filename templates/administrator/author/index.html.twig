@@ -21,12 +21,14 @@
 
 <br>
 {# Ajouter un auteur #}
-
+<div style = "margin: 15px">
 <a  href="{{path('author_new')}}"> Ajouter un auteurs </a>
-
+</div>
 
 {# Afficher tout les auteurs et jout des lien de modif et sup #}
+ <div style="display: flex; justify-content: space-around">
 {% for author in authors %}
+ <div style="padding:10px; border: solid 1px;">
 <h2> auteur </h2>
 {{author.firstname|capitalize }} {{author.lastname|upper}}<br>
 <br>
@@ -44,5 +46,5 @@
 <a  href="{{path('author_delete', {id:author.id})}}"> Supprimer </a>
 </div>
 {% endfor %}
-
+</div>
 {% endblock %}

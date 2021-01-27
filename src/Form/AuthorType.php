@@ -26,7 +26,7 @@ class AuthorType extends AbstractType
                 'required' => true
             ])
              ->add('biography', TextareaType::class, [
-                'label' => 'biography :',
+                'label' => 'Biographie :',
                  'required' => true
             ])
             ->add('imageFile', FileType::class, [
