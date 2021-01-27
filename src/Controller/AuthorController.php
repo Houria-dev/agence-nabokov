@@ -96,17 +96,10 @@ class AuthorController extends AbstractController
     {
         $author = $authorRepository->find($id);
 
-<<<<<<< HEAD
         // if(!$author)
         // {
         //     die("Aucun auteur trouv� !");
         // }
-=======
-        if(!$author)
-        {
-            die("Aucun auteur trouvé !");
-        }
->>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
 
         return $this->render('visiteur/author/show.html.twig', [
             'author' => $author
