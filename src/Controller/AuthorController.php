@@ -19,7 +19,7 @@ class AuthorController extends AbstractController
     */
     public function index(AuthorRepository $authorRepository)
     {
-        $authors = $authorRepository->findAll();
+        $authors = $authorRepository->findAllOrdredByName();
         return $this->render('visiteur/author/index.html.twig', [
             'authors' => $authors,
         ]);
@@ -30,7 +30,7 @@ class AuthorController extends AbstractController
      */
     public function indexpage(AuthorRepository $authorRepository)
     {
-        $authors = $authorRepository->findAll();
+        $authors = $authorRepository->findAllOrdredByName();
         return $this->render('administrator/author/index.html.twig', [
             'authors' => $authors,
         ]);
@@ -96,10 +96,17 @@ class AuthorController extends AbstractController
     {
         $author = $authorRepository->find($id);
 
+<<<<<<< HEAD
         // if(!$author)
         // {
         //     die("Aucun auteur trouv� !");
         // }
+=======
+        if(!$author)
+        {
+            die("Aucun auteur trouvé !");
+        }
+>>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
 
         return $this->render('visiteur/author/show.html.twig', [
             'author' => $author
@@ -114,13 +121,21 @@ class AuthorController extends AbstractController
         $author = $authorRepository->find($id);
         if(!$author)
         {
+<<<<<<< HEAD
             die("Aucun auteur trouv� !");
+=======
+            die("Aucun auteur trouvé !");
+>>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
         }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
+<<<<<<< HEAD
          $this->addFlash("delete_author_success", "L'auteur a bien �t� supprim� !");
+=======
+         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
+>>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
 
         return $this->redirectToRoute('author_index');
     }

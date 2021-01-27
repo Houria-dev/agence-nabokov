@@ -7,13 +7,17 @@
 
 {# Afficher tout les auteurs et jout des lien pour affichage individuel #}
 {% for author in authors %}
-
+<div style="padding:10px;">
 {{author.firstname|capitalize }} {{author.lastname|upper}}<br>
 <h2>Biographie du auteur</h2>
-{{author.biography}}
-<br>
-{# <a  href="{{path('author_show', {id:author.id})}}"> Afficher </a> #}
-{% endfor %}
 
+ {% if author.imageName is defined and author.imageName is not empty %}
+ {# <img src="{{ asset('images/authors/' ~ author.imageName ) }}" alt="photo du auteur" width="400px"><br><br> #}
+ <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br><br>
+ {% endif %}
+
+{{author.biography}}
+</div>
+{% endfor %}
 
 {% endblock %}
