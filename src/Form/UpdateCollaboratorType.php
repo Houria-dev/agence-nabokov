@@ -14,9 +14,17 @@ class UpdateCollaboratorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('biography', TextType::class)
+            ->add('firstname', TextType::class, [
+                'label' => 'prénom :',
+                'required' => true
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'nom :',
+                'required' => true
+            ])
+            ->add('biography', TextType::class, [
+                'label' => 'biography :',
+            ])
             ->add('save', SubmitType::class,['label'=>'Modifier ce collaborateur'])
         ;
     }

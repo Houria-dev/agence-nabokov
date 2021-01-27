@@ -14,9 +14,17 @@ class CollaboratorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('biography',  TextareaType::class)
+            ->add('firstName', TextType::class, [
+                'label' => 'prénom :',
+                'required' => true
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'nom :',
+                'required' => true
+            ])
+            ->add('biography',  TextareaType::class, [
+                'label' => 'biography :',
+            ])
             ->add('save', SubmitType::class,['label'=>'Ajouter ce collaborateur'])
         ;
     }
