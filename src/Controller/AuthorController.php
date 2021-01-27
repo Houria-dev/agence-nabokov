@@ -89,7 +89,7 @@ class AuthorController extends AbstractController
     }
 
     
-     /**
+    /**
      * @Route("/auteurs/{id}", name="author_show")
     */
     public function show($id, AuthorRepository $authorRepository)
@@ -114,21 +114,13 @@ class AuthorController extends AbstractController
         $author = $authorRepository->find($id);
         if(!$author)
         {
-<<<<<<< HEAD
             die("Aucun auteur trouv� !");
-=======
-            die("Aucun auteur trouvé !");
->>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
         }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
-<<<<<<< HEAD
          $this->addFlash("delete_author_success", "L'auteur a bien �t� supprim� !");
-=======
-         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
->>>>>>> 6254e93eb07c9ec505bd929114a880feffb7b641
 
         return $this->redirectToRoute('author_index');
     }

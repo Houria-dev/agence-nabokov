@@ -16,7 +16,7 @@ class CollaboratorType extends AbstractType
         $builder
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
-            ->add('biography', TextType::class)
+            ->add('biography',  TextareaType::class)
             ->add('save', SubmitType::class,['label'=>'Ajouter ce collaborateur'])
         ;
     }

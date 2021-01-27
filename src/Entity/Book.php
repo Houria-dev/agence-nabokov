@@ -2,26 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\AuthorRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
+use Symfony\Component\HttpFoundation\File\File;
 /**
- * @ORM\Entity(repositoryClass=AuthorRepository::class)
+ * @ORM\Entity(repositoryClass=BookRepository::class)
  * @Vich\Uploadable
  */
-class Author
+class Book
 {
-
-    public function __construct()
-    {
-        $this->updatedAt = new \DateTime();
-        $this->books = new ArrayCollection();
-    }
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -32,21 +22,26 @@ class Author
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=45)
-     */
-    private $lastName;
+    private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $biography;
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $editor;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $publication_date;
 
      /**
      * 
-     * @Vich\UploadableField(mapping="authors", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="books", fileNameProperty="imageName", size="imageSize")
      * 
      * @var File|null
      */
@@ -72,54 +67,80 @@ class Author
      */
     private $updatedAt;
 
+
+
     /**
-     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="auteur_id", orphanRemoval=true)
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $books;
-    
+    private $auteur;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->firstName;
+        return $this->title;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setTitle(string $title): self
     {
-        $this->firstName = $firstName;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getLastName(): ?string
+    public function getDescription(): ?string
     {
-        return $this->lastName;
+        return $this->description;
     }
 
-    public function setLastName(string $lastName): self
+    public function setDescription(?string $description): self
     {
-        $this->lastName = $lastName;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getBiography(): ?string
+    public function getEditor(): ?string
     {
-        return $this->biography;
+        return $this->editor;
     }
 
-    public function setBiography(?string $biography): self
+    public function setEditor(?string $editor): self
     {
-        $this->biography = $biography;
+        $this->editor = $editor;
 
         return $this;
     }
 
-    /**
+    public function getPublicationDate(): ?\DateTimeInterface
+    {
+        return $this->publication_date;
+    }
+
+    public function setPublicationDate(\DateTimeInterface $publication_date): self
+    {
+        $this->publication_date = $publication_date;
+
+        return $this;
+    }
+
+    public function getAuteur(): ?Author
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(?Author $auteur): self
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
      */
     public function setImageFile(?File $imageFile = null): void
@@ -168,35 +189,4 @@ class Author
     {
         return $this->imageSize;
     }
-
-    /**
-     * @return Collection|Book[]
-     */
-    public function getBooks(): Collection
-    {
-        return $this->books;
-    }
-
-    public function addBook(Book $book): self
-    {
-        if (!$this->books->contains($book)) {
-            $this->books[] = $book;
-            $book->setAuteur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBook(Book $book): self
-    {
-        if ($this->books->removeElement($book)) {
-            // set the owning side to null (unless already changed)
-            if ($book->getAuteur() === $this) {
-                $book->setAuteur(null);
-            }
-        }
-
-        return $this;
-    }
-
 }
