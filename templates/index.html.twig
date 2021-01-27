@@ -6,9 +6,7 @@
     <h1>Actualité</h1>
     <div style="display: flex; justify-content: space-around">
         {% for book in lastBooks %}
-            <div style="padding:10px; border: solid 1px;">
-               {{ book.title }}
-            </div>
+            {% include 'components/card-book.html.twig' with {'book': book} %}
         {% endfor %}
     </div>
 {% endblock %}
