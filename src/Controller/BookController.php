@@ -24,7 +24,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/admin/livre/nouveau", name="book_new")
+     * @Route("/admin/livres/nouveau", name="book_new")
      */
     public function add(Request $request) 
     {
@@ -50,7 +50,7 @@ class BookController extends AbstractController
 
     }
     /**
-     * @Route("/admin/livre/editer/{id}", name="book_edit")
+     * @Route("/admin/livres/editer/{id}", name="book_edit")
      */
     public function edit(Request $request, $id) 
     {
@@ -76,7 +76,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/admin/livre/supprimer/{id}", name="book_delete")
+     * @Route("/admin/livres/supprimer/{id}", name="book_delete")
      */
     public function delete($id) 
     {
@@ -96,16 +96,27 @@ class BookController extends AbstractController
         
     }
 
-    /**
-     * @Route("/livre/{id}", name="book_show")
-    */
-    public function show($id)
-    {
-        $book =$this->getDoctrine()->getRepository(Book::class)->find($id);
+    // /**
+    //  * @Route("/livre/{id}", name="book_show")
+    // */
+    // public function show($id)
+    // {
+    //     $book =$this->getDoctrine()->getRepository(Book::class)->find($id);
 
-        return $this->render('visiteur/book/show.html.twig', [
-            'book' => $book
+    //     return $this->render('visiteur/book/show.html.twig', [
+    //         'book' => $book
+    //     ]);
+    // } 
+
+    /**
+    * @Route("/", name="home_index")
+    */
+    public function index()
+    {
+        $books = $this->getDoctrine()->getRepository(Book::class)->findAllOrdredByDateAndLimited();
+        return $this->render('index.html.twig', [
+            'lastBooks' => $books,
         ]);
-    } 
+    }
 
 }

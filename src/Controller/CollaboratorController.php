@@ -45,17 +45,17 @@ class CollaboratorController extends AbstractController
     }
     
     /**
-     * @Route("/admin/collaborateur/nouveau", name="admin_newCollaborators")
+     * @Route("/admin/collaborateurs/nouveau", name="admin_newCollaborators")
      */
     
      public function add(Request $request)
      {
+
        $collaborator=new Collaborator;
         $form=$this->createForm(CollaboratorType::class, $collaborator);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
-        {
-          $entityManager = $this->getDoctrine()->getManager();   
+        { $entityManager = $this->getDoctrine()->getManager();   
           $entityManager->persist($collaborator);
           $entityManager->flush();
           $this->addFlash('new_collaborator', 'le collaborateur a été ajouté avec succès');
@@ -67,7 +67,7 @@ class CollaboratorController extends AbstractController
      }
 
      /**
-     * @Route("/admin/collaborateur/modifier/{id}", name="admin_updateCollaborators",  requirements={"id"="\d+"})
+     * @Route("/admin/collaborateurs/editer/{id}", name="admin_updateCollaborators",  requirements={"id"="\d+"})
      */
     
     public function update(Request $request, $id)
@@ -90,6 +90,11 @@ class CollaboratorController extends AbstractController
 
         }
         
+        else{
+            $this->addFlash('collaborator_notFound', 'Ce collaborateur n\'existe pas');
+           return  $this->RedirectToRoute("admin_collaborators");
+            
+        }
     }
      /**
      * @Route("/admin/collaborateur/supprimer/{id}", name="admin_deleteCollaborators",  requirements={"id"="\d+"})

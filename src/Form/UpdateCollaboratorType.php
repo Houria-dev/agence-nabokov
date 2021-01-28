@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Collaborator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +23,7 @@ class UpdateCollaboratorType extends AbstractType
                 'label' => 'nom :',
                 'required' => true
             ])
-            ->add('biography', TextType::class, [
+            ->add('biography', TextareaType::class, [
                 'label' => 'biography :',
             ])
             ->add('save', SubmitType::class,['label'=>'Modifier ce collaborateur'])

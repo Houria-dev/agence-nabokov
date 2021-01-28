@@ -66,7 +66,7 @@ class AuthorController extends AbstractController
 
 
      /**
-     * @Route("/admin/auteurs/{id}", name="author_edit")
+     * @Route("/admin/auteurs/editer/{id}", name="author_edit")
      */    
     public function edit($id, Request $request, AuthorRepository $authorRepository)
     {
@@ -90,16 +90,11 @@ class AuthorController extends AbstractController
 
     
     /**
-     * @Route("/auteurs/{id}", name="author_show")
+     * @Route("/auteurs/afficher/{id}", name="author_show")
     */
     public function show($id, AuthorRepository $authorRepository)
     {
         $author = $authorRepository->find($id);
-
-        // if(!$author)
-        // {
-        //     die("Aucun auteur trouv� !");
-        // }
 
         return $this->render('visiteur/author/show.html.twig', [
             'author' => $author
@@ -107,7 +102,7 @@ class AuthorController extends AbstractController
     } 
   
     /**
-     * @Route("/admin/auteurs/delete/{id}", name="author_delete")
+     * @Route("/admin/auteurs/supprimer/{id}", name="author_delete")
      */
     public function delete($id, AuthorRepository $authorRepository)
     {

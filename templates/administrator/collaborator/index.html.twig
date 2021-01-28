@@ -13,11 +13,16 @@
  {{message}}
 {% endfor %}
 
-{# Alert de modification d'un collaborateur #}
+{# Alert de suppression d'un collaborateur #}
 {% for message in app.flashes('delete_collaborator') %}
  {{message}}
 {% endfor %}
 
+<br>
+{# Alert de  collaborateur inexistant#}
+{% for message in app.flashes('collaborator_notFound') %}
+ {{message}}
+{% endfor %}
 <br>
 {# Ajouter un collaborateur #}
 
