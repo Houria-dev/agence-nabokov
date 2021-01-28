@@ -40,7 +40,7 @@ class BookType extends AbstractType
                 'choice_label' => function($author) {
                      return $author-> getFirstName().' '.$author->getLastName(); 
                  },
-                'choice_value' => 'firstName'))
+                 'choice_value' => 'firstName'))
         
             ->add('save', SubmitType::class,['label'=>'Ajouter le livre'])
            

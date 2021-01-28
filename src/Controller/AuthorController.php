@@ -39,7 +39,7 @@ class AuthorController extends AbstractController
     /**
      * @Route("/admin/auteurs/nouveau", name="author_new")
      */
-    public function new(Request $request)
+    public function new(Request $request, AuthorRepository $authorRepository)
     {
         $author = new Author;
 
@@ -48,14 +48,23 @@ class AuthorController extends AbstractController
 
         
         if($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
+        {   
+            $nom=$author->getLastName();
+            $prenom=$author->getFirstName();
+            $authorexist=$authorRepository->findAuthor($nom,$prenom);
+            if($authorexist==null)
+            {   
+                $em = $this->getDoctrine()->getManager();
 
-            $em->persist($author);
-            $em->flush();
+                $em->persist($author);
+                $em->flush();
 
-            $this->addFlash("add_author_success", "L'auteur a bien été  ajouté !");
-
+                $this->addFlash("add_author_success", "L'auteur a bien été  ajouté !");
+            }
+            else
+            {
+                $this->addFlash("author_alreadyExist", "Cet auteur existe déjà!");
+            }
             return $this->redirectToRoute('author_index');
         }
 
@@ -71,21 +80,29 @@ class AuthorController extends AbstractController
     public function edit($id, Request $request, AuthorRepository $authorRepository)
     {
         $author = $authorRepository->find($id);
-        $form = $this->createForm(UpdateAuthorType::class, $author);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        if($author!=null)
+            {$form = $this->createForm(UpdateAuthorType::class, $author);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+
+                $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
+
+                return $this->redirectToRoute('author_index');
+            }
+            
+            return $this->render('administrator/author/update.html.twig', [
+                'formAuthor' => $form->createView()
+            ]);  
+        }   
+        else
         {
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
-
-            $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
-
-            return $this->redirectToRoute('author_index');
+            $this->addFlash("author_notFound", "Cet auteur n'existe pas!");
+            return $this->redirectToRoute('author_index');  
         }
-        
-        return $this->render('administrator/author/update.html.twig', [
-            'formAuthor' => $form->createView()
-        ]);        
+         
     }
 
     
@@ -95,10 +112,17 @@ class AuthorController extends AbstractController
     public function show($id, AuthorRepository $authorRepository)
     {
         $author = $authorRepository->find($id);
-
-        return $this->render('visiteur/author/show.html.twig', [
-            'author' => $author
-        ]);
+        if($author!=null)
+        {   
+            return $this->render('visiteur/author/show.html.twig', [
+                'author' => $author
+            ]);
+        }
+        else
+        {
+            $this->addFlash("author_notFound", "Cet auteur n'existe pas!");
+            return $this->redirectToRoute('author_index');  
+        }
     } 
   
     /**

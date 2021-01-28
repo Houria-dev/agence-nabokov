@@ -50,16 +50,26 @@ class CollaboratorController extends AbstractController
     
      public function add(Request $request)
      {
-
+        
        $collaborator=new Collaborator;
         $form=$this->createForm(CollaboratorType::class, $collaborator);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
-        { $entityManager = $this->getDoctrine()->getManager();   
-          $entityManager->persist($collaborator);
-          $entityManager->flush();
-          $this->addFlash('new_collaborator', 'Le collaborateur a été ajouté avec succès !');
-          return $this->redirectToRoute('admin_collaborators');
+        {   $nom=$collaborator->getLastname();
+            $prenom=$collaborator->getFirstname();
+            $collaboratorexist=$this->getDoctrine()->getRepository(Collaborator::class)->findCollaborator($nom,$prenom);
+            if($collaboratorexist==null)
+            {   
+                $entityManager = $this->getDoctrine()->getManager();   
+                $entityManager->persist($collaborator);
+                $entityManager->flush();
+                $this->addFlash('new_collaborator', 'Le collaborateur a été ajouté avec succès !');
+            }
+            else{
+
+                $this->addFlash('Collab_AlreadyExist', 'Ce collaborateur existe déjà!');  
+            }
+            return $this->redirectToRoute('admin_collaborators');
         }
 
         return $this->render('administrator/collaborator/newCollaborator.html.twig', ['new_collaborator'=>$form->createView()]);

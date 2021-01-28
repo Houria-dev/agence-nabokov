@@ -18,6 +18,17 @@
 {% for message in app.flashes('delete_author_success') %}
  {{message}}
 {% endfor %}
+<br>
+{# Alert de modification dun'auteur qui n'existe pas existe déja #}
+{% for message in app.flashes('author_notFound') %}
+ {{message}}
+{% endfor %}
+
+<br>
+{# Alert d'ajout d'un auteur qui existe déja #}
+{% for message in app.flashes('author_alreadyExist') %}
+ {{message}}
+{% endfor %}
 
 <br>
 {# Ajouter un auteur #}

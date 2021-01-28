@@ -32,7 +32,17 @@ class CollaboratorRepository extends ServiceEntityRepository
         ;
     }
     
-
+    public function findCollaborator($nom, $prenom): ?Collaborator
+    {
+        return $this->createQueryBuilder('c')
+        ->andWhere('c.firstname = :val')
+        ->setParameter('val', $prenom)
+        ->andWhere('c.lastname = :val2')
+        ->setParameter('val2', $nom)
+        ->getQuery()
+        ->getOneOrNullResult()
+        ;
+    }
     /*
     public function findOneBySomeField($value): ?Collaborator
     {

@@ -32,6 +32,11 @@
  {{message}}
 {% endfor %}
 <br>
+{# Alert de  collaborateur existe déjà au moment de l'ajout#}
+{% for message in app.flashes('Collab_AlreadyExist') %}
+ {{message}}
+{% endfor %}
+<br>
 {# Ajouter un collaborateur #}
 
     {% include('administrator/includes/navbar.html.twig') %}
