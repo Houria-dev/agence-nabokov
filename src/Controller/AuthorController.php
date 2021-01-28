@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
     /**
-    * @Route("/auteurs", name="index")
+    * @Route("/auteurs", name="author_visitor_index")
     */
     public function index(AuthorRepository $authorRepository)
     {
@@ -46,7 +46,7 @@ class AuthorController extends AbstractController
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
 
-
+        
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -54,7 +54,7 @@ class AuthorController extends AbstractController
             $em->persist($author);
             $em->flush();
 
-            $this->addFlash("add_author_success", "L'auteur a bien été ajouté !");
+            $this->addFlash("add_author_success", "L'auteur a bien été  ajouté !");
 
             return $this->redirectToRoute('author_index');
         }
@@ -88,18 +88,18 @@ class AuthorController extends AbstractController
         ]);        
     }
 
-    /*
-     /**
+    
+    /**
      * @Route("/auteurs/{id}", name="author_show")
     */
     public function show($id, AuthorRepository $authorRepository)
     {
         $author = $authorRepository->find($id);
 
-        if(!$author)
-        {
-            die("Aucun auteur trouvé !");
-        }
+        // if(!$author)
+        // {
+        //     die("Aucun auteur trouv� !");
+        // }
 
         return $this->render('visiteur/author/show.html.twig', [
             'author' => $author

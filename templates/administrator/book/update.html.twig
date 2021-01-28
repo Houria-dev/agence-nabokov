@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un livre !{% endblock %}
+
+{% block body %}
+    
+
+    <div>
+       {{ form(formbook) }}
+    </div>
+    <br>
+
+    <div>
+        <a href="{{ path('book_index') }}" class="btn btn-info">Retour à la liste des livres</a>
+    </div>
+
+{% endblock %}

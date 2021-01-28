@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello book!{% endblock %}
+
+{% block body %}
+
+{# Alert d'ajout d'un nouveau auteur #}
+{% for message in app.flashes('add_book_success') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de modification d'un auteur #}
+{% for message in app.flashes('edit_book_success') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de suppression d'un auteur #}
+{% for message in app.flashes('delete_book_success') %}
+ {{message}}
+{% endfor %}
+
+<br>
+{# Ajouter un auteur #}
+<div style = "margin: 15px">
+<a  href="{{path('book_new')}}"> Ajouter un livre </a>
+</div>
+
+<div style="display: flex; justify-content: space-around">
+{% for book in books %}
+
+ <div style="padding:10px; border: solid 1px;">
+
+{% if book.imageName is defined and book.imageName is not empty %}
+<img src="{{ asset('images/books/' ~ book.imageName ) }}" alt="photo du auteur" width="100px"><br><br>
+{# <img src="{{ vich_uploader_asset(books,'imageFile') }}" alt="couverture du livre" width="400px"><br><br> #}
+{% endif %}
+<br>
+
+Titre:{{book.title|capitalize }} <br>
+Description:{{book.description}}<br>
+Date de publication:{{book.publicationDate|date('d-m-Y')}} <br>
+
+<h3> Auteur: {{book.auteur.firstName}}  {{book.auteur.lastName}} </h3>
+Editeur:{{book.editor}}
+<br>
+ <a  href="{{path('book_edit', {id:book.id})}}"> Modifier </a>
+<br>
+<a  href="{{path('book_delete', {id:book.id})}}"> Supprimer </a>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

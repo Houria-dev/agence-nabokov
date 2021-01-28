@@ -1,0 +1,12 @@
+{% if book.imageName is defined and book.imageName is not empty %}
+<img src="{{ asset('images/books/' ~ book.imageName ) }}" alt="photo du auteur" width="100px"><br><br>
+{# <img src="{{ vich_uploader_asset(books,'imageFile') }}" alt="couverture du livre" width="400px"><br><br> #}
+{% endif %}
+<br>
+
+Titre:{{book.title|capitalize }} <br>
+Description:{{book.description}}<br>
+Date de publication:{{book.publicationDate|date('d-m-Y')}} <br>
+
+<h3> Auteur: {{book.auteur.firstName}}  {{book.auteur.lastName}} </h3>
+Editeur:{{book.editor}}
