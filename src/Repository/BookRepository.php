@@ -39,7 +39,7 @@ class BookRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('b')
             ->orderBy('b.publication_date', 'DESC')
-            ->setMaxResults(5)
+            ->setMaxResults(4)
             ->getQuery()
             ->getResult()
             ;
