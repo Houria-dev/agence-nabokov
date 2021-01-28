@@ -16,6 +16,18 @@ class UpdateCollaboratorType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
+<<<<<<< HEAD
+                'label' => false,
+                'required' => true
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => false,
+                'required' => true
+            ])
+            ->add('biography', TextareaType::class, [
+                'label' => false
+            ])
+=======
                 'label' => 'prénom :',
                 'required' => true
             ])
@@ -27,6 +39,7 @@ class UpdateCollaboratorType extends AbstractType
                 'label' => 'biography :',
             ])
             ->add('save', SubmitType::class,['label'=>'Modifier ce collaborateur'])
+>>>>>>> main
         ;
     }
 

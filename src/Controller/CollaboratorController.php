@@ -58,7 +58,7 @@ class CollaboratorController extends AbstractController
         { $entityManager = $this->getDoctrine()->getManager();   
           $entityManager->persist($collaborator);
           $entityManager->flush();
-          $this->addFlash('new_collaborator', 'le collaborateur a été ajouté avec succès');
+          $this->addFlash('new_collaborator', 'Le collaborateur a été ajouté avec succès !');
           return $this->redirectToRoute('admin_collaborators');
         }
 
@@ -81,7 +81,7 @@ class CollaboratorController extends AbstractController
             {
               $entityManager = $this->getDoctrine()->getManager();
               $entityManager->flush();
-              $this->addFlash('update_collaborator', 'le collaborateur a été modifié avec succès');
+              $this->addFlash('update_collaborator', 'Le collaborateur a été modifié avec succès !');
               return $this->redirectToRoute('admin_collaborators');
             }
 
@@ -106,7 +106,7 @@ class CollaboratorController extends AbstractController
         $entityManager->remove($collaborator);
         $entityManager->flush();
 
-        $this->addFlash('delete_collaborator', 'le collaborateur a bien été supprimé');
+        $this->addFlash('delete_collaborator', 'Le collaborateur a bien été supprimé !');
           return $this->redirectToRoute('admin_collaborators');
 
         
