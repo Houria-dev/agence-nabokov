@@ -1,3 +1,53 @@
+{% extends 'base.html.twig' %}
 
+{% form_theme new_collaborator 'bootstrap_4_layout.html.twig' %}
 
-{{form(new_collaborator)}}
+{% block title %}Agence Catherine Nabokov - Collaborateurs{% endblock %}
+{% block icon %}
+    <link rel="icon" href="images/avatar.jpg" type="image/jpg" sizes="16x16">
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+
+    {% include('administrator/includes/navbar.html.twig') %}
+    
+    <div class="container fond">
+
+        <div class="row">
+			<div class="col-4">
+				<h3 class="titre">Ajouter un collaborateur</h3>
+			</div>
+		</div>
+		<br><br>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {{ form_start(new_collaborator) }}
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label">{{ form_label(new_collaborator.lastname, 'NOM') }}</div>
+                        <div class="col-sm-9">{{ form_row(new_collaborator.lastname) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label">{{ form_label(new_collaborator.firstname, 'PRENOM') }}</div>
+                        <div class="col-sm-9">{{ form_row(new_collaborator.firstname) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label">{{ form_label(new_collaborator.biography, 'BIOGRAPHY') }}</div>
+                        <div class="col-sm-9">{{ form_row(new_collaborator.biography) }}</div>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-dark" style="color: #091740;">Ajouter le collaborateur</button>
+                    </div>
+                
+                {{ form_end(new_collaborator) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
