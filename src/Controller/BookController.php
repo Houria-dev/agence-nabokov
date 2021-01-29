@@ -34,12 +34,22 @@ class BookController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $em = $this->getDoctrine()->getManager();
+            $title=$book->getTitle();
+            $editor=$book->getEditor();
+            $publication=$book->getPublicationDate();
+            $bookExist=$this->getDoctrine()->getRepository(Book::class)->findBook($title,$editor,$publication);
+            if ($bookExist==null)
+            {
+                $em = $this->getDoctrine()->getManager();
 
-            $em->persist($book);
-            $em->flush();
+                $em->persist($book);
+                $em->flush();
 
-            $this->addFlash("add_book_success", "Le livre a bien été ajouté !");
+                $this->addFlash("add_book_success", "Le livre a bien été  ajouté !");
+            }
+            else{
+                $this->addFlash("book_already_exist", "Le livre existe déjà!");
+            }
 
             return $this->redirectToRoute('book_index');
         }
@@ -55,24 +65,34 @@ class BookController extends AbstractController
     public function edit(Request $request, $id) 
     {
         $book=$this->getDoctrine()->getRepository(Book::class)->find($id);
-        $form = $this->createForm(UpdateBookType::class, $book);
-        $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
+        if($book!=null)
+        {   
+            $form = $this->createForm(UpdateBookType::class, $book);
+            $form->handleRequest($request);
 
-            $em->flush();
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
 
-            $this->addFlash("edit_book_success", "Le livre a bien été modifié !");
+                $em->flush();
 
-            return $this->redirectToRoute('book_index');
-        }
+                $this->addFlash("edit_book_success", "Le livre a bien été modifié !");
 
         return $this->render('administrator/book/update.html.twig', [
             'formBook' => $form->createView(),
         ]);
+                return $this->redirectToRoute('book_index');
+            }
 
+            return $this->render('administrator/book/new.html.twig', [
+                'formBook' => $form->createView(),
+            ]);
+        }
+        else{
+            $this->addFlash("book_notFound", "Ce livre n'existe pas!");
+            return $this->redirectToRoute('book_index');
+        }
     }
 
     /**
