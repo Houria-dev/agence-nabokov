@@ -2,10 +2,12 @@
 
 {% form_theme new_collaborator 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Agence Catherine Nabokov - Collaborateurs{% endblock %}
+{% block title %}Agence Catherine Nabokov - Ajout d'un collaborateurs{% endblock %}
+
 {% block icon %}
-    <link rel="icon" href="images/avatar.jpg" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
@@ -36,7 +38,7 @@
                         <div class="col-sm-9">{{ form_row(new_collaborator.firstname) }}</div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label">{{ form_label(new_collaborator.biography, 'BIOGRAPHY') }}</div>
+                        <div class="col-sm-3 col-form-label">{{ form_label(new_collaborator.biography, 'BIOGRAPHIE') }}</div>
                         <div class="col-sm-9">{{ form_row(new_collaborator.biography) }}</div>
                     </div>
                     <br>

@@ -139,7 +139,7 @@ class AuthorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
-         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
+         $this->addFlash("delete_author_success", "L'auteur.e a bien été supprimé.e !");
 
         return $this->redirectToRoute('author_index');
     }
