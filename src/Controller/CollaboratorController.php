@@ -87,6 +87,7 @@ class CollaboratorController extends AbstractController
         {
             $form=$this->createForm(UpdateCollaboratorType::class, $collaborator);
             $form->handleRequest($request);
+            
             if($form->isSubmitted() && $form->isValid())
             {
               $entityManager = $this->getDoctrine()->getManager();

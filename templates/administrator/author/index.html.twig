@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Agence Catherine Nabokov - Auteurs{% endblock %}
+
 {% block icon %}
     <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
@@ -14,21 +16,6 @@
 
     {% include('administrator/includes/navbar.html.twig') %}
 
-{# Alert de suppression d'un auteur #}
-{% for message in app.flashes('delete_author_success') %}
- {{message}}
-{% endfor %}
-<br>
-{# Alert de modification dun'auteur qui n'existe pas existe déja #}
-{% for message in app.flashes('author_notFound') %}
- {{message}}
-{% endfor %}
-
-<br>
-{# Alert d'ajout d'un auteur qui existe déja #}
-{% for message in app.flashes('author_alreadyExist') %}
- {{message}}
-{% endfor %}
     <div class="container fond">
 
         <div class="row justify-content-between">
@@ -81,11 +68,31 @@
             </div>
         {% endfor %}
 
+        {# Alert de modification d'un auteur qui n'existe pas #}
+        {% for message in app.flashes('author_notFound') %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        {# Alert d'ajout d'un auteur qui existe déja #}
+        {% for message in app.flashes('author_alreadyExist') %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
         <br>
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-card-4 text-center">
-                    <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive d-flex flex-column align-items-center">
+                    <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
                     <div class="profile-content">
                         <div class="profile-name">
                             AJOUTER UN AUTEUR
@@ -108,11 +115,13 @@
                 <div class="col-md-3">
                     <div class="profile-card-4 text-center d-flex flex-column align-items-center">
                         {% if author.imageName is defined and author.imageName is not empty %}
-                            <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo de l'auteur" width="200px">
+                            <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo de l'auteur" width="300px">
+                        {% else %}
+                        <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive d-flex flex-column align-items-center">
                         {% endif %}
-                        {# <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive"> #}
+                    
                         <div class="profile-content">
-                            <div class="profile-name">
+                            <div class="profile-name" style="color: #091740;">
                                 {{author.lastname|upper}}
                                 <p>{{author.firstname|capitalize }}</p>
                             </div>
