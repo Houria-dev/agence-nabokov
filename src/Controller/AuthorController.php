@@ -54,7 +54,7 @@ class AuthorController extends AbstractController
             $em->persist($author);
             $em->flush();
 
-            $this->addFlash("add_author_success", "L'auteur a bien été  ajouté !");
+            $this->addFlash("add_author_success", "L'auteur.e a bien été ajouté.e !");
 
             return $this->redirectToRoute('author_index');
         }
@@ -78,7 +78,7 @@ class AuthorController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
+            $this->addFlash("edit_author_success", "L'auteur.e a bien été modifié.e !");
 
             return $this->redirectToRoute('author_index');
         }
@@ -120,7 +120,7 @@ class AuthorController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($author);
         $em->flush();
-         $this->addFlash("delete_author_success", "L'auteur a bien été supprimé !");
+         $this->addFlash("delete_author_success", "L'auteur.e a bien été supprimé.e !");
 
         return $this->redirectToRoute('author_index');
     }

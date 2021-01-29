@@ -18,23 +18,21 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'label' => 'prénom :',
+                'label' => false,
                 'required' => true
             ])
             ->add('lastName', TextType::class, [
-                'label' => 'nom :',
+                'label' => false,
                 'required' => true
             ])
              ->add('biography', TextareaType::class, [
-                'label' => 'Biographie :',
-                 'required' => true
+                'label' => false,
+                'required' => true
             ])
             ->add('imageFile', FileType::class, [
                 'required' => false,
-                'label' => 'image :'
+                'label' => false
             ])
-            ->add('save', SubmitType::class,['label'=>'Ajouter l\'auteur'])
-
         ;
     }
 
