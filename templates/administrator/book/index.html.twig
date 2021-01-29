@@ -4,23 +4,35 @@
 
 {% block body %}
 
-{# Alert d'ajout d'un nouveau auteur #}
+{# Alert d'ajout d'un nouveau livre #}
 {% for message in app.flashes('add_book_success') %}
  {{message}}
 {% endfor %}
 
-{# Alert de modification d'un auteur #}
+{# Alert d'ajout d'un nouveau livre #}
+{% for message in app.flashes('book_notFound') %}
+ {{message}}
+{% endfor %}
+
+{# Alert de modification d'un livre #}
 {% for message in app.flashes('edit_book_success') %}
  {{message}}
 {% endfor %}
 
-{# Alert de suppression d'un auteur #}
+{# Alert de suppression d'un livre #}
 {% for message in app.flashes('delete_book_success') %}
  {{message}}
 {% endfor %}
 
 <br>
-{# Ajouter un auteur #}
+
+{# Alert d'ajout d'un livre existant #}
+{% for message in app.flashes('book_already_exist') %}
+ {{message}}
+{% endfor %}
+
+<br>
+{# Ajouter un livre #}
 <div style = "margin: 15px">
 <a  href="{{path('book_new')}}"> Ajouter un livre </a>
 </div>
