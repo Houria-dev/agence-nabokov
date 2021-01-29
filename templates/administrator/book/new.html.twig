@@ -5,7 +5,7 @@
 {% block title %}Agence Catherine Nabokov - Ajout d'un livre{% endblock %}
 
 {% block icon %}
-    <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
 
 {% block stylesheets %}
@@ -51,15 +51,14 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4 col-form-label">
-                            {{ form_label(formBook.imageFile, 'PHOTO') }}
+                            {{ form_label(formBook.imageFile, 'COUVERTURE') }}
                         </div>
                         <div class="form-control-file col-sm-8">
                             {{ form_row(formBook.imageFile) }}
                         </div>
                     </div>
-                    <br>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-dark" style="color: #091740;">Ajouter le livre</button>
+                        <button type="submit" class="btn btn-outline-info" style="color: #091740;">Ajouter le livre</button>
                     </div>
                 {{ form_end(formBook) }}
             </div>

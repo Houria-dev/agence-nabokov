@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Agence Catherine Nabokov - Auteurs{% endblock %}
+{% block title %}Agence Catherine Nabokov - Les auteurs{% endblock %}
 
 {% block icon %}
-    <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
 
 {% block stylesheets %}
@@ -92,9 +92,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-card-4 text-center">
-                    <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
+                    <img src="{{ asset('images/authors/auteurs.jpg') }}" class="img img-responsive d-flex flex-column align-items-center" width="300px" alt="ajout d'auteur">
                     <div class="profile-content">
-                        <div class="profile-name">
+                        <div class="profile-description" style="color: #091740; font-size: 17px; font-weight: bold;">
                             AJOUTER UN AUTEUR
                         </div>
                         <br>
@@ -117,15 +117,15 @@
                         {% if author.imageName is defined and author.imageName is not empty %}
                             <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo de l'auteur" width="300px">
                         {% else %}
-                        <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive d-flex flex-column align-items-center">
+                        <img src="{{ asset('images/authors/auteurs.jpg') }}" class="img img-responsive" alt="photo de l'auteur" width="300px">
                         {% endif %}
                     
                         <div class="profile-content">
-                            <div class="profile-name" style="color: #091740;">
-                                {{author.lastname|upper}}
-                                <p>{{author.firstname|capitalize }}</p>
-                            </div>
-                            <div class="profile-description">
+                            {# <div class="profile-name" >
+        
+                            </div> #}
+                            <div class="profile-description" style="color: #091740;">
+                                <strong><p style="font-size: 17px">{{author.firstname|capitalize }} {{author.lastname|upper}}</p></strong>
                                 <p style="word-break: break-all;">{{author.biography|slice(0, 30)}} [...]</p>
                             </div>
                             <div class="row">

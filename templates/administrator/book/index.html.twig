@@ -3,7 +3,7 @@
 {% block title %}Agence Catherine Nabokov - Livres{% endblock %}
 
 {% block icon %}
-    <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
 
 {% block stylesheets %}
@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-card-4 text-center d-flex flex-column align-items-center">
-                    <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive d-flex flex-column align-items-center">
+                    <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive d-flex flex-column align-items-center" width="300px" alt="ajout de livre">
                     <div class="profile-content">
                         <div class="profile-description" style="color: #091740; font-size: 17px; font-weight: bold;">
                             AJOUTER UN LIVRE
@@ -96,16 +96,12 @@
                 <div class="col-md-3">
                     <div class="profile-card-4 text-center d-flex flex-column align-items-center">
                         {% if book.imageName is defined and book.imageName is not empty %}
-                            <img src="{{ vich_uploader_asset(book, 'imageFile') }}" alt="photo de l'auteur" width="300px">
+                            <img src="{{ vich_uploader_asset(book, 'imageFile') }}" alt="couverture du livre" width="300px">
                         {% else %}
-                        <img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
+                        <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive" alt="couverture du livre" width="300px">
                         {% endif %}
                     
                         <div class="profile-content">
-                            {# <div class="profile-name" style="color: #091740;">
-                                {{book.title|capitalize}}
-                                <p>{{book.auteur.firstName|capitalize}} {{book.auteur.lastName|upper}}</p>
-                            </div> #}
                             <div class="profile-description" style="color: #091740;">
                                 <p style="font-size: 17px"><strong>{{book.title|capitalize}}</strong></p>
                                 <p style="font-size: 17px">{{book.auteur.firstName|capitalize}} {{book.auteur.lastName|upper}}</p>

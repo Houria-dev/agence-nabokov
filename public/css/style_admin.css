@@ -163,3 +163,9 @@ textarea {
 	border-color: #5e9bfc;
 	color: #5e9bfc;
 }
+
+.custom-file-label:lang(fr)::after {
+    content: "Choisir une image";
+}
+
+

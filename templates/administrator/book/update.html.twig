@@ -1,17 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Modifier un livre !{% endblock %}
+{% form_theme formBook 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Agence Catherine Nabokov - Modification d'un livre{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16">
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+{% endblock %}
 
 {% block body %}
-    
 
-    <div>
-       {{ form(formbook) }}
-    </div>
-    <br>
+    {% include('administrator/includes/navbar.html.twig') %}
 
-    <div>
-        <a href="{{ path('book_index') }}" class="btn btn-info">Retour à la liste des livres</a>
+    <div class="container fond">
+
+        <div class="row">
+			<div class="col-4">
+				<h3 class="titre">Modification du livre</h3>
+			</div>
+		</div>
+		<br><br>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {{ form_start(formBook) }}
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(formBook.title, 'TITRE') }}</div>
+                        <div class="col-sm-8">{{ form_row(formBook.title) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(formBook.auteur, 'AUTEUR') }}</div>
+                        <div class="col-sm-8">{{ form_row(formBook.auteur) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(formBook.description, 'RESUME') }}</div>
+                        <div class="col-sm-8">{{ form_row(formBook.description) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(formBook.editor, 'EDITEUR') }}</div>
+                        <div class="col-sm-8">{{ form_row(formBook.editor) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(formBook.publication_date, 'DATE DE PUBLICATION') }}</div>
+                        <div class="col-sm-8">{{ form_row(formBook.publication_date) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">
+                            {{ form_label(formBook.imageFile, 'COUVERTURE') }}
+                        </div>
+                        <div class="couverture col-sm-8" lang="fr">
+                            {{ form_row(formBook.imageFile) }}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-info" style="color: #091740;">Modifier le livre</button>
+                    </div>
+                {{ form_end(formBook) }}
+            </div>
+        </div>
     </div>
 
 {% endblock %}
