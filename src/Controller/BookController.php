@@ -33,13 +33,14 @@ class BookController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
-        {   
+        {
             $title=$book->getTitle();
             $editor=$book->getEditor();
             $publication=$book->getPublicationDate();
             $bookExist=$this->getDoctrine()->getRepository(Book::class)->findBook($title,$editor,$publication);
             if ($bookExist==null)
-                {$em = $this->getDoctrine()->getManager();
+            {
+                $em = $this->getDoctrine()->getManager();
 
                 $em->persist($book);
                 $em->flush();
@@ -78,6 +79,9 @@ class BookController extends AbstractController
 
                 $this->addFlash("edit_book_success", "Le livre a bien été modifié !");
 
+        return $this->render('administrator/book/update.html.twig', [
+            'formBook' => $form->createView(),
+        ]);
                 return $this->redirectToRoute('book_index');
             }
 

@@ -22,17 +22,28 @@ class UpdateBookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label'=>'Titre', 'required'=>true])
-            ->add('description',  TextareaType::class, ['label'=>'Description', 'required'=>false])
-            ->add('editor', TextType::class, ['label'=>'Editeur', 'required'=>false])
+            ->add('title', TextType::class, [
+                'label'=> false, 
+                'required'=>true
+            ])
+            ->add('description',  TextareaType::class, [
+                'label'=> false, 
+                'required'=>false
+            ])
+            ->add('editor', TextType::class, [
+                'label'=> false, 
+                'required'=>false])
             ->add('publication_date', DateType::class, [
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
-                'format' => 'yyyy-MM-dd','label'=>'Date de publication', 'required'=>true])
+                'format' => 'yyyy-MM-dd',
+                'label'=> false, 
+                'required'=>true
+            ])
             ->add('imageFile',FileType::class,
             [
                 'required' => false,
-                'label' => 'image :'
+                'label' => false
             ])
 
             ->add('auteur', EntityType::class,  array(
@@ -40,10 +51,9 @@ class UpdateBookType extends AbstractType
                 'choice_label' => function($author) {
                      return $author-> getFirstName().' '.$author->getLastName(); 
                  },
-                'choice_value' => 'firstName'))
-        
-            ->add('save', SubmitType::class,['label'=>'Modifier'])
-           
+                'choice_value' => 'firstName',
+                'label' => false
+            ))
         ;
     }
 

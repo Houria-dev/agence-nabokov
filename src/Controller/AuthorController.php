@@ -59,11 +59,11 @@ class AuthorController extends AbstractController
                 $em->persist($author);
                 $em->flush();
 
-                $this->addFlash("add_author_success", "L'auteur a bien été  ajouté !");
+                $this->addFlash("add_author_success", "L'auteur.e a bien été ajouté.e !");
             }
             else
             {
-                $this->addFlash("author_alreadyExist", "Cet auteur existe déjà!");
+                $this->addFlash("author_alreadyExist", "Cet.te auteur.e existe déjà!");
             }
             return $this->redirectToRoute('author_index');
         }
@@ -88,7 +88,7 @@ class AuthorController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
 
-                $this->addFlash("edit_author_success", "L'auteur a bien été modifié !");
+                $this->addFlash("edit_author_success", "L'auteur.e a bien été modifié.e !");
 
                 return $this->redirectToRoute('author_index');
             }
@@ -99,7 +99,7 @@ class AuthorController extends AbstractController
         }   
         else
         {
-            $this->addFlash("author_notFound", "Cet auteur n'existe pas!");
+            $this->addFlash("author_notFound", "Cet.te auteur.e n'existe pas!");
             return $this->redirectToRoute('author_index');  
         }
          
@@ -120,7 +120,7 @@ class AuthorController extends AbstractController
         }
         else
         {
-            $this->addFlash("author_notFound", "Cet auteur n'existe pas!");
+            $this->addFlash("author_notFound", "Cet.te auteur.e n'existe pas!");
             return $this->redirectToRoute('author_index');  
         }
     } 

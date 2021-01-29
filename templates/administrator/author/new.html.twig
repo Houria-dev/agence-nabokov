@@ -2,10 +2,10 @@
 
 {% form_theme formAuthor 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Agence Catherine Nabokov - Ajout d'un auteur{% endblock %}
+{% block title %}Agence Catherine Nabokov - Ajouter un auteur{% endblock %}
 
 {% block icon %}
-    <link rel="icon" href="{{ asset('images/avatar.jpg') }}" type="image/jpg" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16">
 {% endblock %}
 
 {% block stylesheets %}
@@ -49,9 +49,8 @@
                             {{ form_row(formAuthor.imageFile) }}
                         </div>
                     </div>
-                    <br>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-dark" style="color: #091740;">Ajouter l'auteur</button>
+                        <button type="submit" class="btn btn-outline-info" style="color: #091740;">Ajouter l'auteur</button>
                     </div>
                 {{ form_end(formAuthor) }}
             </div>
