@@ -5,7 +5,13 @@
 <h2>Livres :</h2>
 <div style="display:flex; justify-content: space-around">
     {% for book in author.books %}
-        {% include 'components/card-book.html.twig' with {'book': book} %}
+         <div style="background-image: url('{{ asset('images/books/' ~ book.imageName) }}'); height:300px;width:300px; display: flex; flex-direction: column;    justify-content: center;
+             align-items: center;">
+             
+                <h2>{{ book.title }}</h2>
+                <span> - </span>
+                <h3>{{ book.editor }}</h3>
+             </div>
     {% endfor %}
 </div>
 <a href="{{ path('author_visitor_index') }}"> Retour à la liste des auteurs </a>
