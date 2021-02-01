@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Agence Catherine Nabokov - Détail auteur{% endblock %}
+{% block title %}Agence Catherine Nabokov | Les auteur·ice·s &mdash; {{ author.firstname|capitalize }} {{ author.lastname|capitalize }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
@@ -17,7 +17,7 @@
 <main>
 
     <div id="retour" class="my-5 container">
-        <img src="{{ asset('images/left-arrow.png') }}">
+        <a href="{{path('author_visitor_index')}}"><img src="{{ asset('images/left-arrow.png') }}"></a>
     </div>
 
     <div id="auteur__bio" class="my-5 row container justify-content-center align-items-start">

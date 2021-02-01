@@ -518,14 +518,14 @@ header { height: 100vh; }
 
 /* FLÈCHE RETOUR */
 
-#retour > img 
+#retour img 
 {
     width: 40px;
     transition: all .3s;
     cursor: pointer;
 }
 
-#retour > img:hover
+#retour img:hover
 {
     transform: translateX(-20px);
 }
