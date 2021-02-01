@@ -25,11 +25,11 @@ class ContactController extends AbstractController
             ->setTo("agenceNabokov@htomail.fr")
             ->setReplyTo($contact->getEmail())
             ->setBody(
-                $this->renderView('emails/sendEmail.html.twig', ['contact'=>$contact]),'text/html');
+                $this->renderView('visiteur/emails/sendEmail.html.twig', ['contact'=>$contact]),'text/html');
             $mailer->send($message);
             $this->addFlash('success_mail', 'le mail a bien été envoyé');
         }
-        return $this->render('contact/index.html.twig', [
+        return $this->render('visiteur/contact/index.html.twig', [
             'contact_form' => $form->createView(),
         ]);
     }
