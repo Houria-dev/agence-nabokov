@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Catherine Nabokov{% endblock %}
+
+{% block icon %}
+    {# <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16"> #}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block body %}
+    {# MENU DESKTOP 1 #}
+    <nav class="absolute bg-blanc d-none d-lg-flex py-3 justify-content-lg-end shadow walbaum">
+        <a class="mr-5 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mr-5 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mr-5 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
+
+    {# MENU RESPONSIVE #}
+    <nav id="menu" class="d-none flex-column justify-content-center font-m">
+        <a class="mx-auto my-4 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
+
+    {# MENU RESPONSIVE - BOUTON #}
+    <div class="menu-btn d-lg-none">
+        <div class="menu-btn-burger"></div>
+    </div>
+    
+    {# LOGO SUR L'ACCUEIL (HEADER) #}
+    <header class="d-flex flex-column">
+        <div class="row no-gutters flex-grow-1" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%; position: relative;">
+                <div class="flex-grow-1 d-flex align-items-end mb-3" style="background-color: chartreuse;">
+                    <div class="" style="width: 150px; height: 100%; background-color: chocolate;"></div>
+                    
+                </div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>	
+        </div>
+
+        <div class="row no-gutters flex-grow-1 justify-content-end" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%;">
+                <div class="flex-grow-1" style="background-color: chartreuse;">
+                </div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>
+        </div>
+
+        <div class="row no-gutters flex-grow-1" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%;">
+                <div class="flex-grow-1" style="background-color: chartreuse;"></div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>
+        </div>
+    </header>
+
+    {# MENU DESKTOP 2 #}
+    <nav class="sticky bg-gris d-none d-lg-flex py-3 justify-content-lg-end shadow">
+        <a class="mr-5 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mr-5 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mr-5 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
+
+    {# MAIN #}
+    <!--------------------->
+		<!-- MENU RESPONSIVE -->
+		<nav id="menu" class="d-none flex-column justify-content-center font-m">
+			<a class="mx-auto my-4 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+			<a class="mx-auto my-4 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+			<a class="mx-auto my-4 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+			<a class="mx-auto my-4 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+			<a class="mx-auto my-4 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+		</nav>
+
+		<!------------------------------>
+		<!-- MENU RESPONSIVE - BOUTON -->
+		<div class="menu-btn d-lg-none">
+			<div class="menu-btn-burger"></div>
+		</div>
+
+		<!------------------>
+		<!-- MENU DESKTOP -->
+		<nav class="sticky bg-or d-none d-lg-flex py-3 justify-content-lg-end shadow">
+			<a class="mr-5 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+			<a class="mr-5 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+			<a class="mr-5 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+			<a class="mr-5 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+			<a class="mr-5 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+		</nav>
+
+		<main>
+
+            <div class="row no-gutters bg-or">
+
+				<div class="bloc col-xl-6 d-flex flex-column justify-content-center">
+					<!-- Titre AGENCE -->
+					<div class="bloc__titre row d-flex flex-column">
+						<div class="bibliotheque__haut d-flex justify-content-between align-items-end">
+							<div class="bloc__livres vertical d-flex align-items-end">
+								<div class="livre small bg-blanc"></div>
+								<div class="livre bg-bleu"></div>
+							</div>
+
+							<div class="bloc__livres vertical d-flex align-items-end">
+								<div class="livre bg-bleu"></div>
+							</div>
+
+							<h2 class="blanc walbaum">envoi de</h2>
+						</div>
+						<div class="bibliotheque__bas bg-bleu"></div>
+					</div>
+
+					<!-- Texte MANUSCRITS -->
+					<div class="bloc__texte row justify-content-center justify-content-xl-start">
+						<p class="col-10 col-md-8 col-lg-6 col-xl-7 offset-xl-3">Tous les manuscrits adressés à l’agence sont lus. Je reçois de nombreux textes et ne peux répondre à chacun.e. Le délai de lecture est d’environ deux mois. Si un texte m’intéresse, je vous contacterai rapidement. Si vous n’avez pas de réponse sous trois mois, vous pouvez considérer que votre manuscrit n’est pas retenu.<br>
+							<br>
+						Je ne lis que les textes en français, principalement en fiction et non-fiction (pas de poésie, théâtre, essais de sciences humaines, livres illustrés, livres pratiques, textes pour la jeunesse et scénarios).</p>
+					</div>
+
+				</div>
+
+				<div class="bloc col-xl-6 d-flex flex-column justify-content-end align-items-end">
+					<!-- Décoration BIBLIOTHEQUE -->
+					<div class="bloc__titre small row d-flex flex-column">
+						<div class="bibliotheque__haut d-flex align-items-end">
+							<div class="bloc__livres vertical align-items-end">
+								<div class="livre bg-blanc"></div>
+								<div class="livre bg-blanc"></div>
+								<div class="livre bg-bleu"></div>
+							</div>
+
+							<div class="bloc__livres vertical align-items-end">
+								<div class="livre small bg-bleu"></div>
+								<div class="livre small bg-gris"></div>
+								<div class="livre bg-gris"></div>
+								<div class="livre bg-blanc"></div>
+							</div>							
+						</div>
+
+						<div class="bibliotheque__bas bg-bleu"></div>
+					</div>
+
+					<div class="bloc__titre large row d-flex flex-column">
+						<div class="bibliotheque__haut d-flex align-items-end">
+							<h2 class="blanc walbaum">manuscrits</h2>
+
+							<div class="bloc__livres vertical align-items-end">
+								<div class="livre small bg-bleu"></div>
+								<div class="livre small bg-gris"></div>
+								<div class="livre bg-blanc"></div>
+							</div>							
+						</div>
+						<div class="bibliotheque__bas bg-bleu"></div>
+					</div>
+
+					<!-- Texte MANUSCRITS -->
+					<div class="bloc__texte row justify-content-center justify-content-xl-start">
+						<p class="col-10 col-md-8 col-lg-6 col-xl-7 offset-xl-3">Merci d’envoyer votre manuscrit par mail, au format Word ou PDF, avec un descriptif de quelques lignes à manuscrits@agencenabokov.com. Les manuscrits envoyés par la poste ne sont pas acceptés.</p>
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+
+    {# FOOTER #}
+    {% include('visiteur/includes/footer.html.twig') %}
+
+    {% block scripts %}
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}

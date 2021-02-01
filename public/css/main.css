@@ -1,26 +1,26 @@
 @font-face {
     font-family: 'Inria-Regular';
-    src: url('fonts/InriaSans-Regular.ttf');
+    src: url('police/InriaSans-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Inria-Italic';
-    src: url('fonts/InriaSans-Italic.ttf');
+    src: url('police/InriaSans-Italic.ttf');
 }
 
 @font-face {
     font-family: 'Inria-Light';
-    src: url('fonts/InriaSans-Light.ttf');
+    src: url('police/InriaSans-Light.ttf');
 }
 
 @font-face {
     font-family: 'Inria-LightItalic';
-    src: url('fonts/InriaSans-LightItalic.ttf');
+    src: url('police/InriaSans-LightItalic.ttf');
 }
 
 @font-face {
     font-family: 'Walbaum';
-    src: url('fonts/Walbaum.ttf');
+    src: url('police/Walbaum.ttf');
 }
 
 

@@ -1,22 +1,242 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Agence Catherine Nabokov{% endblock %}
 
+{% block icon %}
+    {# <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16"> #}
+{% endblock %}
 
-
-{% block title %}Hello auteurs!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Actualité</h1>
-    <div style="display: flex; justify-content: space-around">
-        {% for book in lastBooks %}
-            <div style="background-image: url('{{ asset('images/books/' ~ book.imageName) }}'); height:300px;width:300px; display: flex; flex-direction: column;    justify-content: center;
-             align-items: center;">
-             
-                <h2>{{ book.title }}</h2>
-                <span> - </span>
-                <h3>{{ book.editor }}</h3>
-             </div>
+    {# MENU DESKTOP 1 #}
+    <nav class="absolute bg-blanc d-none d-lg-flex py-3 justify-content-lg-end shadow walbaum">
+        <a class="mr-5 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mr-5 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mr-5 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
 
-        {% endfor %}
+    {# MENU RESPONSIVE #}
+    <nav id="menu" class="d-none flex-column justify-content-center font-m">
+        <a class="mx-auto my-4 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mx-auto my-4 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
+
+    {# MENU RESPONSIVE - BOUTON #}
+    <div class="menu-btn d-lg-none">
+        <div class="menu-btn-burger"></div>
     </div>
+    
+    {# LOGO SUR L'ACCUEIL (HEADER) #}
+    <header class="d-flex flex-column">
+        <div class="row no-gutters flex-grow-1" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%; position: relative;">
+                <div class="flex-grow-1 d-flex align-items-end mb-3" style="background-color: chartreuse;">
+                    <div class="" style="width: 150px; height: 100%; background-color: chocolate;"></div>
+                    
+                </div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>	
+        </div>
+
+        <div class="row no-gutters flex-grow-1 justify-content-end" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%;">
+                <div class="flex-grow-1" style="background-color: chartreuse;">
+                </div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>
+        </div>
+
+        <div class="row no-gutters flex-grow-1" style="border: solid 1px black;">
+            <div class="col-9 d-flex flex-column justify-content-end" style="height: 100%;">
+                <div class="flex-grow-1" style="background-color: chartreuse;"></div>
+                <div class="flex-grow-0" style="background-color: red; height: 15px;"></div>
+            </div>
+        </div>
+    </header>
+
+    {# MENU DESKTOP 2 #}
+    <nav class="sticky bg-gris d-none d-lg-flex py-3 justify-content-lg-end shadow">
+        <a class="mr-5 walbaum" href="#" title="L'agence" alt="l'agence">l'agence</a>
+        <a class="mr-5 walbaum" href="#" title="Découvrir les auteur·ice·s" alt="auteur·ice·s">auteur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Les collaborateur·ice·s de l'agence" alt="collaborateur·ice·s">collaborateur·ice·s</a>
+        <a class="mr-5 walbaum" href="#" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>
+        <a class="mr-5 walbaum" href="#" title="Contacter l'agence" alt="contact">contact</a>
+    </nav>
+
+    {# MAIN #}
+    <main class="container-fluid">
+			
+        <div id="agence" class="row no-gutters bg-gris">
+
+            <div class="bloc col-xl-6 d-flex flex-column justify-content-center">
+                {# AGENCE - TITRE #}
+                <div id="agence__titre" class="bloc__titre row d-flex flex-column">
+                    <div id="agence__titre--haut" class="bibliotheque__haut d-flex align-items-end">
+                        <div class="bloc__livres horizontal d-flex flex-column align-items-end">
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre bg-bleu"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+                        <h2 class="blanc walbaum">l'agence</h2>
+                    </div>
+                    <div id="agence__titre--bas" class="bibliotheque__bas bg-bleu"></div>
+                </div>
+
+                {# AGENCE - TEXTE #}
+                <div id="agence__texte" class="bloc__texte row justify-content-center justify-content-xl-start">
+                    <p class="col-10 col-md-8 col-lg-6 col-xl-7 offset-xl-3">Fondée en 2020 à Paris, l’agence littéraire <strong class="underline">Catherine Nabokov</strong> accompagne et représente de nouvelles voix de la littérature. Elle se tient à côté des écrivain·e·s pendant l’écriture et la finalisation de leur texte. Elle se charge ensuite de le présenter aux maisons d’édition et de négocier le contrat.</p>
+                </div>
+
+            </div>
+
+            <div class="bloc bottom col-xl-6 d-flex flex-column justify-content-end align-items-end">
+                {# AGENCE - DÉCORATION #}
+                <div class="bloc__titre small row d-flex flex-column">
+                    <div class="bibliotheque__haut d-flex align-items-end">
+                        <div class="bloc__livres horizontal align-items-start">
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre bg-or"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+
+                        <div class="bloc__livres vertical align-items-end">
+                            <div class="livre bg-or"></div>
+                            <div class="livre small bg-blanc"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="bibliotheque__bas bg-bleu"></div>
+                </div>
+
+                <div class="bloc__titre row d-flex flex-column">
+                    <div class="bibliotheque__haut d-flex align-items-end">
+                        <div class="bloc__livres horizontal align-items-start">
+                            <div class="livre bg-bleu"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+
+                        <div class="bloc__livres vertical align-items-end">
+                            <div class="livre bg-or"></div>
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre small bg-blanc"></div>
+                        </div>
+
+                        <div class="bloc__livres horizontal align-items-end">
+                            <div class="livre small bg-or"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="bibliotheque__bas bg-bleu"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="biographie" class="row no-gutters bg-gris">
+
+            <div class="bloc bottom col-lg-5 d-flex flex-column justify-content-end order-2 order-xl-1">
+                {# BIOGRAPHIE - DÉCORATION #}
+                <div class="bloc__titre small row d-flex flex-column">
+                    <div class="bibliotheque__haut d-flex justify-content-end align-items-end">
+                        <div class="bloc__livres vertical align-items-end">
+                            <div class="livre bg-blanc"></div>
+                            <div class="livre bg-bleu"></div>
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre small bg-or"></div>
+                        </div>							
+                    </div>
+                    <div class="bibliotheque__bas bg-bleu"></div>
+                </div>
+
+                <div class="bloc__titre row d-flex flex-column">
+                    <div class="bibliotheque__haut d-flex align-items-end justify-content-between">
+                        <div class="bloc__livres horizontal align-items-end">
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+
+                        <div class="bloc__livres vertical align-items-end">
+                            <div class="livre small bg-bleu"></div>
+                            <div class="livre bg-or"></div>
+                            <div class="livre small bg-blanc"></div>
+                            <div class="livre bg-bleu"></div>
+                            <div class="livre bg-blanc"></div>
+                            <div class="livre bg-or"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="bibliotheque__bas bg-bleu"></div>
+                </div>
+                
+            </div>
+
+            <div class="bloc col-xl-6 d-flex flex-column justify-content-center order-1 order-xl-2">
+                {# BIOGRAPHIE - TEXTE #}
+                <div id="biographie__texte" class="bloc__texte row justify-content-center justify-content-xl-end">
+                    <p class="col-10 col-md-8 col-lg-6 col-xl-9">Après avoir étudié la littérature russe, Catherine Nabokov a commencé très tôt à travailler dans l’édition. Elle a fait ses premiers pas chez Christian Bourgois Éditeur avant d’être, pendant vingt ans, éditrice en littérature française et en non-fiction dans différentes maisons, telles Stock ou Le Seuil. Devenue éditrice indépendante, elle a publié plusieurs premiers romans, dont Petit pays de Gaël Faye en 2016 (prix Fnac et prix Goncourt des lycéens). Ce long compagnonnage avec les écrivain·e·s, ces années passées à les écouter, les aiguiller, les conseiller, les lire et les relire, l’a poussée à créer, en 2020, l’agence Catherine Nabokov.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {# LES ACTUALITÉS #}
+        <div id="actualites" class="row no-gutters bg-blanc">
+
+            {# ACTUALITÉS - TITRE #}
+            <div id="actualites__titre" class="bloc__titre row d-flex flex-column">
+                <div id="actualites__titre--haut" class="bibliotheque__haut d-flex align-items-end">
+                    <div class="bloc__livres vertical d-flex align-items-end">
+                        <div class="livre bg-bleu"></div>
+                        <div class="livre small bg-gris"></div>
+                        <div class="livre small bg-gris"></div>
+                    </div>
+                    <h2 class="bleu walbaum">actualités</h2>
+                </div>
+                <div id="actualites__titre--bas" class="bibliotheque__bas bg-bleu"></div>
+            </div>
+
+            <div id="actualites__livres" class="d-flex flex-wrap flex-lg-nowrap container justify-content-around">
+
+                {# DÉBUT DE LA BOUCLE DES LIVRES #}
+                {% for book in lastBooks %}
+                <a class="livre mx-5 mb-5">
+                    <figure class="d-flex flex-column align-items-center">
+                        <img src="{{ asset('images/books/' ~ book.imageName) }}">
+                        <div></div>
+                    </figure>
+                    <figcaption class="mt-3">
+                        <h3>{{ book.title }}</h3>
+                        <p class="font-s">{{ book.editor }} · 14/01/2021</p>
+                    </figcaption>
+                </a>
+                {% endfor %}
+                {# FIN DE LA BOUCLE #}
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {# FOOTER #}
+    {% include('visiteur/includes/footer.html.twig') %}
+
+    {% block scripts %}
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+
 {% endblock %}
