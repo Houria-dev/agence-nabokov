@@ -79,9 +79,6 @@ class BookController extends AbstractController
 
                 $this->addFlash("edit_book_success", "Le livre a bien été modifié !");
 
-        return $this->render('administrator/book/update.html.twig', [
-            'formBook' => $form->createView(),
-        ]);
                 return $this->redirectToRoute('book_index');
             }
 

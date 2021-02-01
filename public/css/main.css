@@ -1,0 +1,816 @@
+@font-face {
+    font-family: 'Inria-Regular';
+    src: url('fonts/InriaSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Inria-Italic';
+    src: url('fonts/InriaSans-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Inria-Light';
+    src: url('fonts/InriaSans-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Inria-LightItalic';
+    src: url('fonts/InriaSans-LightItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Walbaum';
+    src: url('fonts/Walbaum.ttf');
+}
+
+
+/* //////// */
+/* BG-COLOR */
+/* //////// */
+.bg-bleu { background-color: rgb(9, 23, 65); }
+.bg-gris { background-color: rgb(159, 176, 167); }
+.bg-or { background-color: rgb(140, 107, 0); }
+.bg-blanc { background-color: rgb(253, 247, 233); }
+
+
+/* ///// */
+/* COLOR */
+/* ///// */
+.bleu p, .bleu a, .bleu { color: rgb(9, 23, 65); }
+.gris p, .gris a, .gris { color: rgb(159, 176, 167); }
+.or p, .or a, .or { color: rgb(140, 107, 0); }
+.blanc p, .blanc a, .blanc { color: rgb(253, 247, 233); }
+
+
+/* ///////// */
+/* POSITIONS */
+/* ///////// */
+.sticky { position: sticky; top: 0; z-index: 5; }
+.absolute { position: absolute; width: 100%; top: 0; z-index: 5; }
+
+/* ////////// */
+/* ALIGNEMENT */
+/* ////////// */
+.text-center { text-align: center; }
+
+/* //////////////// */
+/* MARGIN & PADDING */
+/* //////////////// */
+
+/* ////// */
+/* TEXTES */
+/* ////// */
+
+/* FONT-SIZE */
+.font-s { font-size: 0.85rem; }
+.font-m { font-size: 1rem; }
+.font-l { font-size: 1.25rem; }
+.font-xl { font-size: 1.953rem; }
+.font-xxl { font-size: 2.441rem; }
+.font-xxxl { font-size: 3.052rem; }
+
+/* FONT-FAMILY */
+.walbaum { font-family: 'Walbaum'; }
+.light { font-family: 'Inria-Light'; }
+
+.underline { border-bottom: solid 1px rgb(9, 23, 65); }
+em { font-family: 'Inria-Italic'; }
+strong { font-family: 'Inria-Regular'; }
+
+
+/* ////////// */
+/* DECORATION */
+/* ////////// */
+
+hr 
+{
+    border: none;
+    border-top: solid 1px rgb(9, 23, 65);
+}
+
+/* BOX SHADOW */
+.shadow { box-shadow: 0 .25rem .75rem rgba(9, 23, 65, .15); }
+
+
+
+/* ///////////////// */
+/* ÉLÉMENTS DE PAGES */
+/* ///////////////// */
+
+/* //// */
+/* MENU */
+/* //// */
+nav 
+{
+    font-size: .8rem;
+}
+
+nav > a::after
+{
+    display: block;
+    content: "";
+    height: 1px;
+    background-color: rgb(9, 23, 65);
+    transition: all .3s;
+    transform: scaleX(1);
+}
+
+nav > a:hover::after,
+nav > a.active::after
+{
+    transform: scaleX(0);
+}
+
+/* ////////////// */
+/* BLOCS DE TEXTE */
+/* ////////////// */
+#agence, #biographie, #actualites, #manuscrits, #contact { padding: 50px 0; }
+
+.bloc { margin: 50px 0; }
+
+.bloc__titre
+{
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 50px;
+}
+
+.bloc.bottom .bloc__titre:last-child { margin-bottom: 0; }
+
+.bloc__titre.large
+{
+    width: 90%;
+    max-width: 330px;
+}
+
+.bloc__titre.small
+{
+    width: 55%;
+    max-width: 200px;
+}
+
+.bloc__titre > .bibliotheque__haut
+{
+    z-index: 2;
+    padding: 0 15px;
+}
+
+.bloc__titre > .bibliotheque__haut > h2
+{
+    margin: 0 15px;
+    font-size: 2.5rem; 
+    line-height: 2.55rem;
+}
+
+.bloc__titre > .bibliotheque__bas
+{
+    height: 7px;
+    width: 100%;
+}
+
+/* CONTENU DU TEXTE */
+.bloc__texte > p
+{
+    font-size: 1rem;
+}
+
+/* BIBLIOTHEQUES ET LIVRES */
+.bloc__titre > .bibliotheque__haut > .bloc__livres
+{
+    display: flex;
+    margin: 0 8px 8px 8px;
+}
+
+.bloc__livres.horizontal
+{
+    flex-direction: column;
+}
+
+.bloc__livres.horizontal > div.livre
+{
+    width: 55px;
+    height: 7px;
+    margin: 8px 0 0 0;
+}
+
+.bloc__livres.vertical > div.livre
+{
+    height: 55px;
+    width: 7px;
+    margin: 0 8px 0 0;
+}
+
+.bloc__livres.vertical > div.livre.small { height: 40px; }
+.bloc__livres.horizontal > div.livre.small { width: 40px; }
+
+
+@media screen and (min-width: 760px)
+{
+    .bloc { margin: 80px 0; }
+
+    .bloc__titre
+    {
+        width: 60%;
+        max-width: 460px;
+        margin-bottom: 75px;
+    }
+
+    .bloc.bottom .bloc__titre:last-child { margin-bottom: 0; }
+
+    .bloc__titre.large
+    {
+        width: 70%;
+        max-width: 520px;
+    }
+
+    .bloc__titre.small
+    {
+        width: 45%;
+        max-width: 340px;
+    }
+
+    .bloc__titre > .bibliotheque__haut
+    {
+        padding: 0 20px;
+    }
+
+    .bloc__titre > .bibliotheque__haut > h2
+    {
+        margin: 0 20px;
+        font-size: 3.2rem; 
+        line-height: 3.2rem;
+    }
+
+    .bloc__titre > .bibliotheque__bas
+    {
+        height: 9px;
+    }
+
+    /* BIBLIOTHEQUES ET LIVRES */
+    .bloc__titre > .bibliotheque__haut > .bloc__livres
+    {
+        margin: 0 10px 9px 10px;
+    }
+
+    .bloc__livres.horizontal > div.livre
+    {
+        width: 65px;
+        height: 9px;
+        margin: 9px 0 0 0;
+    }
+
+    .bloc__livres.vertical > div.livre
+    {
+        height: 65px;
+        width: 9px;
+        margin: 0 9px 0 0;
+    }
+
+    /* CONTENU DES TEXTES */
+    .bloc__texte > p
+    {
+        font-size: 1.15rem;
+    }
+}
+
+@media screen and (min-width: 1020px)
+{
+    #agence, #biographie, #actualites, #manuscrits, #contact { padding: 80px 0; }
+
+    .bloc__titre
+    {
+        width: 70%;
+        max-width: 480px;
+    }
+
+    .bloc__titre.large
+    {
+        width: 85%;
+        max-width: 680px;
+    }
+
+    .bloc__titre.small
+    {
+        width: 30%;
+        max-width: 250px;
+    }
+
+    .bloc__titre > .bibliotheque__haut
+    {
+        padding: 0 25px;
+    }
+
+    .bloc__titre > .bibliotheque__haut > h2
+    {
+        margin: 0 25px;
+        font-size: 3.2rem; 
+        line-height: 3.2rem;
+    }
+
+    /* .bloc__titre > .bibliotheque__bas
+    {
+        height: 10px;
+    } */
+
+    .bloc__titre > .bibliotheque__haut > .bloc__livres
+    {
+        margin-bottom: 10px;
+    }
+
+    .bloc__livres.horizontal > div.livre
+    {
+        width: 75px;
+        /* height: 10px; */
+        margin: 10px 0 0 0;
+    }
+
+    .bloc__livres.vertical > div.livre
+    {
+        height: 75px;
+        /* width: 10px; */
+        margin: 0 10px 0 0;
+    }
+
+    .bloc__livres.horizontal > div.livre.small { width: 55px; }
+
+    .bloc__livres.vertical > div.livre.small { height: 55px; }
+
+}
+
+@media screen and (min-width: 1224px)
+{
+    .bloc.bottom
+    {
+        margin: 0;
+    }
+    
+    .bloc__titre
+    {
+        width: 65%;
+        max-width: 450px;
+    }
+
+    .bloc__titre.large
+    {
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .bloc__titre.small
+    {
+        width: 45%;
+        max-width: 250px;
+    }
+    
+}
+
+/*/////////////*/
+/* MENU BURGER */
+/* /////////// */
+
+
+#menu 
+{ 
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    position: fixed;
+    display: none;
+    background-color: rgba(253, 247, 233, .85);
+}
+
+/*////////////////////*/
+/*MENU BURGER - BOUTON*/
+.menu-btn 
+{
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+  
+.menu-btn>.menu-btn-burger 
+{
+    width: 40px;
+    height: 2px;
+    background: rgb(9, 23, 65);
+    transition: all .5s ease-in-out;
+}
+  
+.menu-btn>.menu-btn-burger::before,
+.menu-btn>.menu-btn-burger::after 
+{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: rgb(9, 23, 65);
+    transition: all .5s ease-in-out;
+}
+  
+.menu-btn>.menu-btn-burger::before{transform: translateY(-12px);}
+.menu-btn>.menu-btn-burger::after{transform: translateY(12px);}
+  
+
+/*//////////////////////////////*/
+/*MENU BURGER - BOUTON ANIMATION*/
+.menu-btn.open>.menu-btn-burger 
+{
+    transform: translateX(-40px);
+    background:transparent;
+    box-shadow: none;
+}
+  
+.menu-btn.open>.menu-btn-burger::before 
+{
+    transform: rotate(45deg) translate(30px, -30px);
+    background: rgb(9, 23, 65);
+}
+  
+.menu-btn.open>.menu-btn-burger::after 
+{
+    transform: rotate(-45deg) translate(30px, 30px);
+    background: rgb(9, 23, 65);
+}
+
+
+
+/* ////////////// */
+/* PAGE D'ACCUEIL */
+/* ////////////// */
+
+
+/* /////////// */
+/* HEADER LOGO */
+header { height: 100vh; }
+
+
+
+/* ////////////// */
+/* LES ACTUALITÉS */
+/* ////////////// */
+#actualites__livres>a:nth-child(3) { display: none; }
+
+
+
+/* /////////// */
+/* LES AUTEURS */
+/* /////////// */
+#auteurs > div > a
+{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 15px rgba(9, 23, 65, .3);
+    transition: all .3s;
+}
+
+#auteurs > div > a:hover
+{
+    opacity: .75;
+}
+
+#auteurs > div > a > div
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(9, 23, 65);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, .35);
+    mix-blend-mode: screen;
+    transition: all .3s;
+}
+
+#auteurs > div > h3
+{
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+}
+
+#auteurs > div > h3::after
+{
+    content: "—";
+    display: block;
+    color: rgb(9, 23, 65);
+}
+
+
+
+/* ////////////////// */
+/* DÉTAIL D'UN AUTEUR */
+/* ////////////////// */
+
+/* FLÈCHE RETOUR */
+
+#retour > img 
+{
+    width: 40px;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+#retour > img:hover
+{
+    transform: translateX(-20px);
+}
+
+/* ////////////////////////// */
+/* DÉTAIL D'UN AUTEUR - IMAGE */
+#auteur__bio > figure
+{
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 0;
+}
+
+#auteur__bio > figure > img
+{
+    width: 100%;
+    box-shadow: 0px 0px 15px rgba(9, 23, 65, .25);
+}
+
+#auteur__bio > figure > div
+{
+    position: absolute; 
+    mix-blend-mode: screen; 
+    background-color: rgb(9, 23, 65); 
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, .35);
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+}
+
+
+/* /////////////////////////////// */
+/* DÉTAIL D'UN AUTEUR - BIOGRAPHIE */
+
+#auteur__bio > div > h2
+{
+    display: inline-block;
+    color: rgb(9, 23, 65);
+    border-bottom: solid 2px rgb(9, 23, 65);
+}
+
+#auteur__bio > div > h2 span { text-transform: uppercase; }
+
+
+/* /////////////////////////////// */
+/* DÉTAIL D'UN AUTEUR - LES LIVRES */
+#auteur__livres > a > figure,
+#actualites__livres > a > figure
+{
+    cursor: pointer;
+}
+
+#auteur__livres > a > figure,
+#actualites__livres > a > figure
+{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: -3px 3px 10px rgba(9, 23, 65, .15);
+}
+
+#auteur__livres > a > figure > img,
+#actualites__livres > a > figure > img
+{
+    height: 100%;
+}
+
+#auteur__livres > a > figure > div,
+#actualites__livres > a > figure > div
+{
+    position: absolute; 
+    mix-blend-mode: screen; 
+    background-color: rgb(9, 23, 65);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, .25);
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+}
+
+#auteur__livres > a > figcaption,
+#actualites__livres > a > figcaption
+{
+    text-align: center;
+    position: relative;
+    background-color: rgb(253, 247, 233);
+    overflow: hidden;
+}
+
+#auteur__livres > a > figcaption > h3,
+#actualites__livres > a > figcaption > h3
+{
+    font-family: 'Walbaum';
+    border-bottom: solid 1px rgb(9, 23, 65);
+    display: inline;
+}
+
+#auteur__livres > a > figcaption > p,
+#actualites__livres > a > figcaption > p
+{
+    position: relative;
+    top: 0px;
+    margin-top: 3px;
+    transition: all .3s;
+}
+
+#auteur__livres > a:hover > figcaption > p,
+#actualites__livres > a:hover > figcaption > p
+{
+    top: 0px;
+}
+
+
+/* /////////////////////////////// */
+/* DÉTAIL D'UN AUTEUR - DÉTAIL D'UN LIVRE */
+#livre__detail--masque
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:rgba(9, 23, 65, .2);
+    height: 100vh;
+    width: 100vw;
+}
+
+#livre__detail
+{
+    z-index: 3;
+    top: 0;
+    right: -100%;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(253, 247, 233);
+    box-shadow: -5px 0 10px rgba(9, 23, 65, .15);
+}
+
+/* /////// */
+/* CONTACT */
+/* /////// */
+/*AJOUTER UN CONTACT*/
+form {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+form > div {
+    width: 100%;
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    flex-grow: 0;
+}
+
+form > div > label {
+    display: inline-block;
+    text-transform: uppercase;
+    width: 20%;
+    margin-right: 25px;
+    text-align: right;
+}
+
+form > div > input{
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px rgb(9, 23, 65);
+    font-size: 1.1em;
+    font-family: "Inria-Light";
+}
+
+form > div.message {
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+form > div > textarea{
+    height: 100%;
+    flex-grow: 1;
+    background-color: transparent;
+    border: solid 1px rgb(9, 23, 65);
+    font-size: 1.1em;
+    font-family: "Inria-Light";
+}
+
+form > input {
+    align-self: flex-end;
+    background-color: transparent;
+    padding: 10px 15px;
+    margin-top: 25px;
+    border: solid 1px black;
+    border-radius: 30px;
+
+    text-transform: uppercase;
+    color: rgb(9, 23, 65);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: rgb(0, 0, 0, .4);
+}
+
+form > div > input#cp,
+form > div > input#ville,
+form > div > input#prix,
+form > div > input#surface {
+    max-width:100px;
+}
+
+form > div > input#photo {
+    border-bottom: none;
+}
+
+form > input:hover {
+    background-color: rgb(9, 23, 65);
+    color: rgb(253, 247, 233);
+}
+
+/* ////////////// */
+/* COLLABORATEURS */
+/* ////////////// */
+
+
+/* ////////// */
+/* RESPONSIVE */
+/* ////////// */
+
+
+/* ////////////////// */
+/* TABLETTE - PORTRAIT */
+@media screen and (min-width: 760px)
+{
+    #actualites__livres>a:nth-child(3) { display: block; }
+
+    #livre__detail
+    {
+        right: -75%;
+        height: 100vh;
+        width: 75%;
+    }
+}
+
+
+/* ////////////////// */
+/* TABLETTE - PAYSAGE */
+@media screen and (min-width: 1024px)
+{
+    #actualites__livres>a:nth-child(3) { display: none; }
+
+    #livre__detail
+    {
+        right: -75%;
+        height: 100vh;
+        width: 75%;
+    }
+}
+
+
+/* ///////////// */
+/* ÉCRAN DESKTOP */
+@media screen and (min-width: 1224px)
+{
+    #actualites__livres>a:nth-child(3) { display: block; }
+
+    #livre__detail
+    {
+        right: -50%;
+        width: 50%;
+        max-width: 650px;
+    }
+
+    #auteur__livres > a > figcaption > p,
+    #actualites__livres > a > figcaption > p
+    {
+        top: 20px;
+    }
+
+    #auteur__livres > a:hover > figcaption > p,
+    #actualites__livres > a:hover > figcaption > p
+    {
+        top: 0px;
+    }
+
+}
