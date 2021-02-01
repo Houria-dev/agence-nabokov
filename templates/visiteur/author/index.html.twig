@@ -1,27 +1,106 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello auteur!{% endblock %}
+{% block title %}Agence Catherine Nabokov - Les auteurs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
 
 {% block body %}
 
+    {% include('visiteur/includes/navbar_responsive.html.twig') %}
+    {% include('visiteur/includes/navbar_desktop.html.twig') %}
+
+<main>
+    <div class="row justify-content-start mt-5 mb-2">
+        <div class="bloc__titre large row d-flex flex-column">
+            <div class="bibliotheque__haut d-flex align-items-end">
+                <div class="bloc__livres vertical d-flex align-items-end">
+                    <div class="livre small bg-bleu"></div>
+                    <div class="livre bg-gris"></div>
+                </div>
+                <h2 class="bleu walbaum">les auteur·ice·s</h2>
+            </div>
+            <div class="bibliotheque__bas bg-bleu"></div>
+        </div>
+    </div>
 
     {# Afficher tout les auteurs et jout des lien pour affichage individuel #}
-    <div style="display: flex; justify-content: space-around">
+    {# <div style="display: flex; justify-content: space-around">
         {% for author in authors %}
-        <a href="{{ path('author_show', {id:author.id}) }}" style="color:black;text-decoration: none;">
-            <div style="padding:10px; border: solid 1px;">
-                {{ author.firstname|capitalize }} {{ author.lastname|upper }}<br>
-                <h2>Biographie du auteur</h2>
+            <a href="{{ path('author_show', {id:author.id}) }}" style="color:black;text-decoration: none;">
+                <div style="padding:10px; border: solid 1px;">
+                    {{ author.firstname|capitalize }} {{ author.lastname|upper }}<br>
+                    <h2>Biographie du auteur</h2>
 
+                    {% if author.imageName is defined and author.imageName is not empty %}
+                        {# <img src="{{ asset('images/authors/' ~ author.imageName ) }}" alt="photo du auteur" width="400px"><br><br> #}
+                        {# <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br>
+                        <br>
+                    {% endif %}
+
+                    {{ author.biography }}
+                </div>
+            </a>
+        {% endfor %}
+    </div> #}
+    
+    <div id="auteurs" class="row container justify-content-center mb-5">
+        
+        {% for author in authors %}
+        <div class="col-10 col-sm-5 col-lg-4 col-xl-3 my-3">
+                
                 {% if author.imageName is defined and author.imageName is not empty %}
-                    {# <img src="{{ asset('images/authors/' ~ author.imageName ) }}" alt="photo du auteur" width="400px"><br><br> #}
-                    <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br>
-                    <br>
+                    <a href="{{path('author_show', {id:author.id})}}" alt="photo de l'auteur" style="display: block; width: 100%; height: 400px; background-image: url({{ vich_uploader_asset(author, 'imageFile') }})"> 
+                        <div></div>
+                    </a>
+
+                {% else %}
+                    <a href="{{path('author_show', {id:author.id})}}" style="background-image: url({{ asset('images/authors/auteurs.jpg') }}); display: block; width: 100%; height: 400px;">
+                        <div></div>
+                    </a>
+
                 {% endif %}
 
-                {{ author.biography }}
-            </div>
-        </a>
+                <h3>{{ author.firstname|capitalize }} {{ author.lastname|upper }}</h3>
+
+        </div>
         {% endfor %}
+
     </div>
+</main>
+		
+    <!-- FOOTER -->
+    <footer class="bg-bleu">
+        
+        <div class="text-center container-lg font-s blanc d-lg-flex flex-column justify-content-between py-5
+        flex-lg-row text-lg-left">
+
+            <div>
+                <img height="100px" src="{{ asset('images/logo-footer.png') }}">
+            </div>
+
+            <div class="d-flex flex-column justify-content-around my-4 my-lg-0">
+                <a class="walbaum underline" href="mailto:contact@agencenabokov.com">contact@agencenabokov</a>
+
+                <a class="d-block" href="#">instagram</a>
+                <a class="d-block" href="#">facebook</a>
+            </div>
+
+            <div class="d-flex flex-column justify-content-around">
+                <a href="#">mentions légales</a>
+                <p>2021 · agence Catherine Nabokov</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+    {% block scripts %}
+        <script src="js/main.js"></script>
+    {% endblock %}
+
 {% endblock %}
