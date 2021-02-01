@@ -33,4 +33,12 @@ class ContactController extends AbstractController
             'contact_form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/manuscrit", name="manuscrit")
+     */
+    public function page()
+    {
+        return $this->render('visiteur/manuscrits/manuscrits.html.twig');
+    }
 }
