@@ -224,7 +224,7 @@
                     </figure>
                     <figcaption class="mt-3">
                         <h3>{{ book.title }}</h3>
-                        <p class="font-s">{{ book.editor }} · 14/01/2021</p>
+                        <p class="font-s">{{ book.editor }} · {{ book.publicationDate|date('d/m/Y') }}</p>
                     </figcaption>
                 </a>
                 {% endfor %}
