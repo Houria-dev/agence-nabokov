@@ -1,19 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CollaboratorController!{% endblock %}
+{% block title %}Agence Catherine Nabokov - Les collaborateurs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
 
 {% block body %}
 
+    {% include('visiteur/includes/navbar_responsive.html.twig') %}
+    {% include('visiteur/includes/navbar_desktop.html.twig') %}
 
-{# Afficher tout les collaborateur et jout des lien pour affichage individuel #}
-{% for collaborator in collaborators %}
+    <main>
 
-{{collaborator.firstname|capitalize }} {{collaborator.lastname|upper}}<br>
-<h2>Biographie du collaborateur</h2>
-{{collaborator.biography}}
-<br>
-{# <a  href="{{path('showCollaborator', {id:collaborator.id})}}"> Afficher </a> #}
-{% endfor %}
+        <div class="row justify-content-start mt-5 mb-2">
+            <div class="bloc__titre large row d-flex flex-column">
+                <div class="bibliotheque__haut d-flex align-items-end">
+                    <div class="bloc__livres vertical d-flex align-items-end">
+                        <div class="livre bg-bleu"></div>
+                        <div class="livre bg-bleu"></div>
+                        <div class="livre small bg-or"></div>
+                    </div>
+                    <h2 class="bleu walbaum">collaborateur·ice·s</h2>
+                </div>
+                <div class="bibliotheque__bas bg-bleu"></div>
+            </div>
+        </div>
+        
+        <div id="collaborateurs" class="container justify-content-center my-5">
+            
+            {% for collaborator in collaborators %}
+            <div class="row">
+                <div class="collaborateurs__titre font-l walbaum col-3 offset-1">
+                    {{collaborator.firstname|capitalize }} {{collaborator.lastname|upper}}<br>&mdash;
+                </div>
 
+                <div class="col-6 offset-1">
+                    {{collaborator.biography}}
+                </div>
+            </div>
+
+            <hr class="my-5">
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+    {% block scripts %}
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
 
 {% endblock %}
