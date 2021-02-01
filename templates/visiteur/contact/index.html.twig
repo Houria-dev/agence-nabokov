@@ -1,13 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}formulaire de contact{% endblock %}
+{% block title %}Agence Catherine Nabokov · Contacter l'agence{% endblock %}
+
+{% block icon %}
+    {# <link rel="icon" href="{{ asset('images/logo2.jpg') }}" type="image/jpg" sizes="16x16"> #}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
 
 {% block body %}
 
+    {% include('visiteur/includes/navbar_responsive.html.twig') %}
+    {% include('visiteur/includes/navbar_desktop.html.twig') %}
 
- {{ form(contact_form) }}
+    <main>
+
+        <div id="contact" class="row no-gutters bg-blanc" style="min-height: 90vh;">
+
+            <div class="bloc bottom col-xl-6 d-flex flex-column justify-content-start">
+                <!-- Titre AGENCE -->
+                <div class="bloc__titre row d-flex flex-column">
+                    <div class="bibliotheque__haut d-flex justify-content-between align-items-end">
+                        <div class="bloc__livres vertical d-flex align-items-end">
+                            <div class="livre small bg-gris"></div>
+                            <div class="livre bg-bleu"></div>
+                        </div>
+
+                        <div class="bloc__livres vertical d-flex align-items-end">
+                            <div class="livre bg-gris"></div>
+                        </div>
+
+                        <h2 class="bleu walbaum">contact</h2>
+                    </div>
+                    <div class="bibliotheque__bas bg-bleu"></div>
+                </div>
+
+                <!-- Texte CONTACT -->
+                <div class="bloc__texte row justify-content-center justify-content-xl-start">
+                    <p class="col-10 col-md-8 col-lg-6 col-xl-6 offset-xl-3">Pour toute question, vous pouvez me contacter via le formulaire ci-contre. Concernant l’<a href="{{path('manuscrit')}}" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>, vous pouvez consulter la page en question pour connaîtres les modalités d’envoi.</p>
+                </div>
+
+            </div>
+
+            <div class="bloc bottom col-xl-6 d-flex align-items-end justify-content-end">
+                <!-- FORMULAIRE -->
+                {{ form_start(contact_form) }}
+                    <div>
+                        {{ form_label(contact_form.sujet) }}
+                        {{ form_widget(contact_form.sujet) }}
+                    </div>
+
+                    <div class="message">
+                        {{ form_label(contact_form.message, 'Une question ?') }}
+                        {{ form_widget(contact_form.message) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(contact_form.email) }}
+                        {{ form_widget(contact_form.email) }}
+                    </div>
+
+                    <input type="submit" name="submit" value="Envoyer →">
+                {{ form_end(contact_form) }}
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {# FOOTER #}
+    {% include('visiteur/includes/footer.html.twig') %}
+
+    {% block scripts %}
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}
+
+
+ {# {{ form(contact_form) }}
 
 {% for message in app.flashes('success_mail') %}
 {{message}} 
-{% endfor %}
-{% endblock %}
+{% endfor %} #}
