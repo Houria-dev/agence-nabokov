@@ -115,16 +115,20 @@
                 <div class="col-md-3">
                     <div class="profile-card-4 text-center d-flex flex-column align-items-center">
                         {% if author.imageName is defined and author.imageName is not empty %}
-                            <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo de l'auteur" width="300px">
+                            <figure>
+                                <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo de l'auteur">
+                            </figure>
                         {% else %}
-                        <img src="{{ asset('images/authors/auteurs.jpg') }}" class="img img-responsive" alt="photo de l'auteur" width="300px">
+                            <figure>
+                                <img src="{{ asset('images/authors/auteurs.jpg') }}" class="img img-responsive" alt="photo de l'auteur">
+                            </figure>
                         {% endif %}
                     
                         <div class="profile-content">
                             {# <div class="profile-name" >
         
                             </div> #}
-                            <div class="profile-description" style="color: #091740;">
+                            <div class="profile-description" style="color: #091740; width: 100%;">
                                 <strong><p style="font-size: 17px">{{author.firstname|capitalize }} {{author.lastname|upper}}</p></strong>
                                 <p style="word-break: break-all;">{{author.biography|slice(0, 30)}} [...]</p>
                             </div>

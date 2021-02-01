@@ -41,6 +41,7 @@
 
 
 .profile-card-4 {
+    position: relative;
     max-width: 300px;
     background-color: #FFF;
     border-radius: 5px;
@@ -50,12 +51,17 @@
     margin: 10px auto;
 }
 
+.profile-card-4 figure {
+    height: 250px; 
+    overflow: hidden;
+}
+
 .profile-card-4 img {
     transition: all 0.25s linear;
+    width: 100%;
 }
 
 .profile-card-4 .profile-content {
-    position: relative;
     padding: 15px;
     background-color: #FFF;
 }
@@ -80,6 +86,7 @@
     color: #777;
     font-size: 12px;
     padding: 10px;
+    position: relative;
 }
 
 .profile-card-4 .profile-overview {
@@ -100,10 +107,10 @@
 .profile-card-4 .profile-content::before {
     content: "";
     position: absolute;
-    height: 30px;
-    width: 300px;
-    top: -10px;
-    left: -40px;
+    height: 60px;
+    width: 110%;
+    top: 230px;
+    left: 0px;
     right: 0px;
     background-color: #FFF;
     z-index: 0;
