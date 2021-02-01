@@ -72,13 +72,14 @@
 }
 
 .profile-card-4 figure {
-    height: 250px; 
+    height: 200px; 
     overflow: hidden;
 }
 
 .profile-card-4 img {
     transition: all 0.25s linear;
     width: 100%;
+    min-height: 100%;
 }
 
 .profile-card-4 .profile-content {
@@ -104,9 +105,23 @@
 
 .profile-card-4 .profile-description {
     color: #777;
-    font-size: 12px;
+    font-size: 16px;
     padding: 10px;
     position: relative;
+}
+
+.profile-card-4 .profile-description p {
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.profile-card-4 .profile-description p strong {
+    font-size: 16px;
+    font-family: 'Inria-Regular';
+}
+
+.profile-card-4 .profile-description p:last-child {
+    font-family: 'Inria-LightItalic';
 }
 
 .profile-card-4 .profile-overview {
@@ -129,7 +144,7 @@
     position: absolute;
     height: 60px;
     width: 110%;
-    top: 230px;
+    top: 180px;
     left: 0px;
     right: 0px;
     background-color: #FFF;
@@ -195,4 +210,37 @@ textarea {
     content: "Choisir une image";
 }
 
+h3.titre
+{
+    font-size: 1.953rem;
+}
+
+/* FORMULAIRE */
+
+.btn-outline-info 
+{
+    background-color: transparent;
+    color: #091740;
+    border: solid 1px #091740;
+    margin-bottom: 50px;
+}
+
+.btn-outline-info:hover 
+{
+    background-color: #091740;
+    border: solid 1px #091740;
+    color: #F4EFD9 !important;
+}
+
+textarea
+{
+    height: 200px !important;
+}
+
+.custom-file-label::after
+{
+    background-color: #091740 !important;
+    color: #F4EFD9 !important;
+    border: 1px solid #091740;
+}
 

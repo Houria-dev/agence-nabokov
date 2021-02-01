@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 {% endblock %}
 
 {% block body %}
@@ -73,9 +73,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-card-4 text-center d-flex flex-column align-items-center">
-                    <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive d-flex flex-column align-items-center" width="300px" alt="ajout de livre">
+                    <figure>
+                        <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive d-flex flex-column align-items-center" alt="ajout de livre">
+                    </figure>
+                    
                     <div class="profile-content">
-                        <div class="profile-description" style="color: #091740; font-size: 17px; font-weight: bold;">
+                        <div class="profile-description" style="color: #091740; font-family: 'Inria-Regular';">
                             AJOUTER UN LIVRE
                         </div>
                         <br>
@@ -96,17 +99,20 @@
                 <div class="col-md-3">
                     <div class="profile-card-4 text-center d-flex flex-column align-items-center">
                         {% if book.imageName is defined and book.imageName is not empty %}
-                            <img src="{{ vich_uploader_asset(book, 'imageFile') }}" alt="couverture du livre" width="300px">
+                            <figure>
+                                <img src="{{ vich_uploader_asset(book, 'imageFile') }}" alt="couverture du livre">
+                            </figure>
                         {% else %}
-                        <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive" alt="couverture du livre" width="300px">
+                            <figure>
+                                <img src="{{ asset('images/books/livres.jpg') }}" class="img img-responsive" alt="couverture du livre">
+                            </figure>
                         {% endif %}
                     
                         <div class="profile-content">
                             <div class="profile-description" style="color: #091740;">
-                                <p style="font-size: 17px"><strong>{{book.title|capitalize}}</strong></p>
-                                <p style="font-size: 17px">{{book.auteur.firstName|capitalize}} {{book.auteur.lastName|upper}}</p>
-                                <p>Publication : {{book.publicationDate|date('d/m/Y')}}</p>
-                                <p>Editeur : {{book.editor|upper}}</p>
+                                <p><strong>{{book.title|upper}}</strong></p>
+                                <p>{{book.auteur.firstName|capitalize}} {{book.auteur.lastName|upper}}</p>
+                                <p>{{book.publicationDate|date('d/m/Y')}} · {{book.editor|upper}}</p>
                             </div>
                             <div class="row">
                                 <div class="col">

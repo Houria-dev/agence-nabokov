@@ -2942,14 +2942,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-  color: #17a2b8;
-  border-color: #17a2b8;
+  color: rgb(9, 23, 65);
+  border-color: rgb(9, 23, 65);
 }
 
 .btn-outline-info:hover {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: rgb(9, 23, 65);
+  border-color: rgb(9, 23, 65);
 }
 
 .btn-outline-info:focus, .btn-outline-info.focus {
