@@ -1,13 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Agence Catherine Nabokov - S'enregistrer{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/jpg" sizes="16x16">
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}">
+{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <div class="container fond">
+
+        <div class="row ">
+			<div class="col-4">
+				<h3 class="titre">S'enregistrer</h3>
+			</div>
+		</div>
+		<br><br>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {{ form_start(registrationForm) }}
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(registrationForm.username, 'IDENTIFIANT') }}</div>
+                        <div class="col-sm-8">{{ form_row(registrationForm.username) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(registrationForm.email, 'EMAIL') }}</div>
+                        <div class="col-sm-8">{{ form_row(registrationForm.email) }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-form-label">{{ form_label(registrationForm.plainPassword, 'MOT DE PASSE' ) }}</div>
+                        <div class="col-sm-8">{{ form_row(registrationForm.plainPassword) }}</div>
+                    </div>
+                    <div class="text-center">
+                            <button type="submit" class="btn btn-outline-info" style="color: #091740;">OK !</button>
+                    </div>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+    {# <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
@@ -17,6 +57,6 @@
         }) }}
         {# {{ form_row(registrationForm.agreeTerms) }} #}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {# <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }} #}
 {% endblock %}
