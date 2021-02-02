@@ -15,13 +15,11 @@ class Contact
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Length(min=10)
      */
     private $sujet;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Length(min=10)
      */
     private $message;
 
