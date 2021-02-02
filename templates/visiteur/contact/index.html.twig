@@ -39,6 +39,15 @@
                     <div class="bibliotheque__bas bg-bleu"></div>
                 </div>
 
+                {% for message in app.flashes('success_mail') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Félicitations ! </strong>{{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
                 <!-- Texte CONTACT -->
                 <div class="bloc__texte row justify-content-center justify-content-xl-start">
                     <p class="col-10 col-md-8 col-lg-6 col-xl-6 offset-xl-3">Pour toute question, vous pouvez me contacter via le formulaire ci-contre. Concernant l’<a href="{{path('manuscrit')}}" title="Envoyer un manuscrit" alt="envoi de manuscrits">envoi de manuscrits</a>, vous pouvez consulter la page en question pour connaîtres les modalités d’envoi.</p>
@@ -83,8 +92,6 @@
 {% endblock %}
 
 
- {# {{ form(contact_form) }}
+{# {{ form(contact_form) }} #}
 
-{% for message in app.flashes('success_mail') %}
-{{message}} 
-{% endfor %} #}
+
