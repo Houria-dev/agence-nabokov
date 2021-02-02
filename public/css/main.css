@@ -665,7 +665,7 @@ header > div:nth-child(2) img
     position: fixed;
     top: 0;
     left: 0;
-    background-color:rgba(9, 23, 65, .2);
+    background-color:rgba(9, 23, 65, .3);
     height: 100vh;
     width: 100vw;
 }
@@ -682,14 +682,64 @@ header > div:nth-child(2) img
     box-shadow: -5px 0 10px rgba(9, 23, 65, .15);
 }
 
+.livre__close
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.livre__close img
+{
+    cursor: pointer;
+    width: 100%;
+    transition: all .3s;
+}
+
+.livre__close img:hover
+{
+    transform: rotate(90deg);
+}
+
 .livre__infos
 {
+    padding: 40px;
+    height: 100%;
+    text-align: center;
     display: none;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .livre__infos.visible
 {
-    display: block;
+    display: flex;
+}
+
+.livre__infos h2
+{
+    font-size: 1.5rem;
+    font-family: 'Walbaum';
+}
+
+.livre__infos h3
+{
+    font-size: 1rem;
+}
+
+.livre__infos hr
+{
+    border: none;
+    border-bottom: solid 1px rgb(9, 23, 65);
+    margin: 25px 0;
+}
+
+.livre__infos p
+{
+    font-size: .8rem;
 }
 
 /* /////// */
@@ -816,6 +866,34 @@ form > input:hover {
         height: 100vh;
         width: 75%;
     }
+
+    .livre__infos
+    {
+        padding: 60px;
+        justify-content: center;
+    }
+
+    .livre__infos h2
+    {
+        font-size: 1.95rem;
+    }
+
+    .livre__infos hr
+    {
+        margin: 50px 0;
+    }
+
+    .livre__infos p
+    {
+        font-size: 1rem;
+    }
+
+    .livre__close
+    {
+        width: 30px;
+        margin-top: 25px;
+        margin-right: 25px;
+    }
 }
 
 
@@ -842,6 +920,16 @@ form > input:hover {
         height: 100vh;
         width: 75%;
     }
+
+    .livre__infos
+    {
+        padding: 100px;
+    }
+
+    .livre__infos hr
+    {
+        margin: 50px;
+    }
 }
 
 
@@ -865,7 +953,7 @@ form > input:hover {
 
     #livre__detail
     {
-        right: -50%;
+        right: -60%;
         width: 50%;
         max-width: 650px;
     }
@@ -880,6 +968,16 @@ form > input:hover {
     #actualites__livres > a:hover > figcaption > p
     {
         top: 0px;
+    }
+
+    .livre__infos
+    {
+        padding: 80px;
+    }
+
+    .livre__infos hr
+    {
+        margin: 25px;
     }
 
 }

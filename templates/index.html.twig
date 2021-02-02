@@ -209,12 +209,17 @@
 
         <div id="livre__detail--masque"></div>
         <div id="livre__detail">
+            <div class="livre__close">
+               <img src="{{ asset('images/close.png') }}" title="Fermer la fenêtre" alt="Icône pour fermer la fenêtre">
+            </div>
 
             {% for book in lastBooks %}
                 <div id="livre-{{ book.id }}" class="livre__infos">
                     <h2>{{ book.title }}</h2>
-                    <h3>{{ book.editor}} &mdash; {{ book.publicationDate|date('d/m/Y') }}</h3>
+                    <hr>
                     <p>{{ book.description }}</p>
+                    <hr>
+                    <h3>{{ book.editor}} &mdash; {{ book.publicationDate|date('d/m/Y') }}</h3>
                 </div>
             {% endfor %}
 
@@ -237,6 +242,20 @@
             	right: '0',
             }, 500);
             $('#livre__detail--masque').fadeIn(500);
+        });
+
+        $('#livre__detail--masque').click(function() {
+            $('#livre__detail').animate({
+            	right: '-100vh',
+            }, 500);
+            $('#livre__detail--masque').fadeOut(500);
+        });
+
+        $('.livre__close').click(function() {
+            $('#livre__detail').animate({
+            	right: '-100vh',
+            }, 500);
+            $('#livre__detail--masque').fadeOut(500);
         });
     </script>
 
