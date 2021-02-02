@@ -31,11 +31,11 @@
                     <h3 class="titre">CONNEXION</h3>
                     <br>
                     <div class="form-group">
-                        <input type="text" class="form-control" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                        <input type="text" class="form-control" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="IDENTIFIANT" required autofocus>
                         {# <input type="text" class="form-control" id="identifiant" placeholder="IDENTIFIANT"> #}
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" id="inputPassword" required>
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="MOT DE PASSE" required> 
                         {# <input type="password" class="form-control" id="password" placeholder="MOT DE PASSE"> #}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     </div>

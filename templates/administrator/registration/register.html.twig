@@ -21,7 +21,7 @@
 
         <div class="row ">
 			<div class="col-4">
-				<h3 class="titre">S'enregistrer</h3>
+				<h3 class="titre">Créer un identifiant</h3>
 			</div>
 		</div>
 		<br><br>
@@ -40,8 +40,10 @@
                         <div class="col-sm-4 col-form-label">{{ form_label(registrationForm.plainPassword, 'MOT DE PASSE' ) }}</div>
                         <div class="col-sm-8">{{ form_row(registrationForm.plainPassword) }}</div>
                     </div>
-                    <div class="text-center">
+                    <div class="form-group row text-center">
+                        <div class="col-sm-7">
                             <button type="submit" class="btn btn-outline-info" style="color: #091740;">OK !</button>
+                        </div>
                     </div>
                 {{ form_end(registrationForm) }}
             </div>
