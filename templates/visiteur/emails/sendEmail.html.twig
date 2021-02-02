@@ -11,7 +11,7 @@
     <hr style="border:none; border-top: solid 1px rgb(9, 23, 65); margin: 25px 0;">
 
     <p style="font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
-        <span style="display: inline-block; border: solid 1px rgb(9, 23, 65); color: rgb(9, 23, 65); font-weight: 300; padding: 5px 10px; margin-right: 10px;">{{contact.sentAt|format_datetime(locale='fr') }}</span> 
+        <span style="display: inline-block; border: solid 1px rgb(9, 23, 65); color: rgb(9, 23, 65); font-weight: 300; padding: 5px 10px; margin-right: 10px;">{{contact.sentAt|date('d/m/Y à H:i') }}</span> 
         &mdash; 
         <a href="mailto:{{contact.email}}" style="color:  rgb(140, 107, 0); text-decoration: none; border-bottom: solid 1px  rgb(140, 107, 0);">{{contact.email}}</a>
     </p>
