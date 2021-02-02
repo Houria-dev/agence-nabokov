@@ -643,6 +643,7 @@ header { height: 100vh; }
 /* DÉTAIL D'UN AUTEUR - DÉTAIL D'UN LIVRE */
 #livre__detail--masque
 {
+    z-index: 11;
     display: none;
     position: fixed;
     top: 0;
@@ -654,7 +655,7 @@ header { height: 100vh; }
 
 #livre__detail
 {
-    z-index: 3;
+    z-index: 12;
     top: 0;
     right: -100%;
     position: fixed;
@@ -662,6 +663,16 @@ header { height: 100vh; }
     width: 100%;
     background-color: rgb(253, 247, 233);
     box-shadow: -5px 0 10px rgba(9, 23, 65, .15);
+}
+
+.livre__infos
+{
+    display: none;
+}
+
+.livre__infos.visible
+{
+    display: block;
 }
 
 /* /////// */

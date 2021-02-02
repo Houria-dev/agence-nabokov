@@ -1,9 +1,18 @@
-Bonjour, 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&display=swap" rel="stylesheet"> 
 
-<p>Vous avez un nouveau message de {{contact.email}}</p>
+<div style="width: 500px; padding: 25px; font-family: 'Inria Sans'; font-weight: 300; color: rgb(9, 23, 65); line-height: 22px;">
+    <h1 style="text-transform: uppercase; font-size: 22px; font-family: 'Inria Sans'; font-weight: 400;">{{contact.sujet}}</h1>
+    
+    <hr style="border:none; border-top: solid 1px rgb(9, 23, 65); margin: 25px 0;">
 
-<h2>Envoyé le {{contact.sentAt|format_datetime(locale='fr') }}  </h2>
-<h2>Sujet:{{contact.sujet}} <h2>
+    <p> {{contact.message}} </p>
 
+    <hr style="border:none; border-top: solid 1px rgb(9, 23, 65); margin: 25px 0;">
 
-<p> {{contact.message}} </p>
+    <p style="font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="display: inline-block; border: solid 1px rgb(9, 23, 65); color: rgb(9, 23, 65); font-weight: 300; padding: 5px 10px; margin-right: 10px;">{{contact.sentAt|format_datetime(locale='fr') }}</span> 
+        &mdash; 
+        <a href="mailto:{{contact.email}}" style="color:  rgb(140, 107, 0); text-decoration: none; border-bottom: solid 1px  rgb(140, 107, 0);">{{contact.email}}</a>
+    </p>
+</div>

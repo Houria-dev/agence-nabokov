@@ -20,7 +20,7 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-            $message=(new \Swift_Message($contact->getSujet()))
+            $message=(new \Swift_Message("[NOUVEAU MESSAGE] " . $contact->getSujet()))
             ->setFrom($contact->getEmail())
             ->setTo("agenceNabokov@htomail.fr")
             ->setReplyTo($contact->getEmail())
