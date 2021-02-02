@@ -14,77 +14,81 @@
     {% include('visiteur/includes/navbar_responsive.html.twig') %}
     {% include('visiteur/includes/navbar_desktop.html.twig') %}
 
-<main>
+    <main>
 
-    <div id="retour" class="my-5 container">
-        <a href="{{path('author_visitor_index')}}"><img src="{{ asset('images/left-arrow.png') }}"></a>
-    </div>
-
-    <div id="auteur__bio" class="my-5 row container justify-content-center align-items-start">
-        
-        <figure class="col-10 col-md-4">
-            {% if author.imageName is defined and author.imageName is not empty %}
-                <img src="{{ vich_uploader_asset(author, 'imageFile') }}" width="100%" alt="photo de l'auteur">
-                {# <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br><br> #}
-
-            {% else %}
-                <img src="{{ asset('images/authors/auteurs.jpg') }}" width="100%" alt="photo de l'auteur">
-
-            {% endif %}
-            <div></div>
-        </figure>
-
-        <div class="col-md-8 col-lg-6 offset-lg-1">
-        
-            <h2 class="font-xl mb-3">{{ author.firstname|capitalize }} <span>{{ author.lastname|upper }}</span></h2>
-
-            <p>{{ author.biography }}</p>
-        
+        <div id="retour" class="my-5 container">
+            <a href="{{path('author_visitor_index')}}"><img src="{{ asset('images/left-arrow.png') }}"></a>
         </div>
 
-    </div>
+        <div id="auteur__bio" class="my-5 row container justify-content-center align-items-start">
+            
+            <figure class="col-10 col-md-4">
+                {% if author.imageName is defined and author.imageName is not empty %}
+                    <img src="{{ vich_uploader_asset(author, 'imageFile') }}" width="100%" alt="photo de l'auteur">
+                    {# <img src="{{ vich_uploader_asset(author, 'imageFile') }}" alt="photo du auteur" width="400px"><br><br> #}
 
-    <hr class="container my-5">
-    
-    <div id="auteur__livres" class="row container justify-content-center my-5">
-        
-        {% for book in author.books %}
-        <a id="{{ book.id }}" class="livre">
-            <figure class="d-flex flex-column align-items-center mx-5">
-                <img src="{{ asset('images/books/' ~ book.imageName) }}">
+                {% else %}
+                    <img src="{{ asset('images/authors/auteurs.jpg') }}" width="100%" alt="photo de l'auteur">
+
+                {% endif %}
                 <div></div>
             </figure>
-            <figcaption class="mt-3">
-                <h3>{{ book.title }}</h3>
-                <p class="font-s">{{ book.editor }} &mdash; {{ book.publicationDate|date('d/m/Y') }}</p>
-            </figcaption>
-        </a>
-        {% endfor %}
 
-    </div>
-    
-    <div id="livre__detail--masque"></div>
-    <div id="livre__detail">
+            <div class="col-md-8 col-lg-6 offset-lg-1">
+            
+                <h2 class="font-xl mb-3">{{ author.firstname|capitalize }} <span>{{ author.lastname|upper }}</span></h2>
 
-        {% for book in author.books %}
-            <div id="livre-{{ book.id }}" class="livre__infos">
-                <h2>{{ book.title }}</h2>
-                <h3>{{ book.editor}} &mdash; {{ book.publicationDate|date('d/m/Y') }}</h3>
-                <p>{{ book.description }}</p>
+                <p>{{ author.biography }}</p>
+            
             </div>
-        {% endfor %}
 
-    </div>
+        </div>
 
-</main>
+        <hr class="container my-5">
+        
+        <div id="auteur__livres" class="row container justify-content-center my-5">
+            
+            {% for book in author.books %}
+            <a id="{{ book.id }}" class="livre">
+                <figure class="d-flex flex-column align-items-center mx-5">
+                    <img src="{{ asset('images/books/' ~ book.imageName) }}">
+                    <div></div>
+                </figure>
+                <figcaption class="mt-3">
+                    <h3>{{ book.title }}</h3>
+                    <p class="font-s">{{ book.editor }} &mdash; {{ book.publicationDate|date('d/m/Y') }}</p>
+                </figcaption>
+            </a>
+            {% endfor %}
+
+        </div>
+        
+        <div id="livre__detail--masque"></div>
+        <div id="livre__detail">
+
+            <div class="livre__close">
+               <img src="{{ asset('images/close.png') }}" title="Fermer la fenêtre" alt="Icône pour fermer la fenêtre">
+            </div>
+
+            {% for book in author.books %}
+                <div id="livre-{{ book.id }}" class="livre__infos">
+                    <h2>{{ book.title }}</h2>
+                    <hr>
+                    <p>{{ book.description }}</p>
+                    <hr>
+                    <h3>{{ book.editor}} &mdash; {{ book.publicationDate|date('d/m/Y') }}</h3>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </main>
 
     {# FOOTER #}
     {% include('visiteur/includes/footer.html.twig') %}
 
-    {% block scripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="js/main.js"></script>
-    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="{{ asset('js/main.js') }}"></script>
     <script>
         $('#auteur__livres>a').click(function(){
             var idLivre = $(this).attr('id');
@@ -95,6 +99,20 @@
             	right: '0',
             }, 500);
             $('#livre__detail--masque').fadeIn(500);
+        });
+
+        $('#livre__detail--masque').click(function() {
+            $('#livre__detail').animate({
+            	right: '-100vh',
+            }, 500);
+            $('#livre__detail--masque').fadeOut(500);
+        });
+
+        $('.livre__close').click(function() {
+            $('#livre__detail').animate({
+            	right: '-100vh',
+            }, 500);
+            $('#livre__detail--masque').fadeOut(500);
         });
     </script>
 
